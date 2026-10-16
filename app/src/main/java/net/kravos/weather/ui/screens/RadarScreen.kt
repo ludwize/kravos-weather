@@ -71,7 +71,6 @@ import org.osmdroid.events.MapListener
 import org.osmdroid.events.ScrollEvent
 import org.osmdroid.events.ZoomEvent
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
-import org.osmdroid.views.overlay.TilesOverlay
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.CustomZoomButtonsController
 import org.osmdroid.views.MapView
@@ -111,7 +110,16 @@ fun RadarScreen(place: Place, u: Units) {
     val mapView = remember {
         MapView(ctx).apply {
             setTileSource(TileSourceFactory.MAPNIK)
-            if (dark) overlayManager.tilesOverlay.setColorFilter(TilesOverlay.INVERTED_COLORS)
+            if (dark) overlayManager.tilesOverlay.setColorFilter(
+                android.graphics.ColorMatrixColorFilter(
+                    floatArrayOf(
+                        -0.85f, 0f, 0f, 0f, 230f,
+                        0f, -0.85f, 0f, 0f, 235f,
+                        0f, 0f, -0.85f, 0f, 245f,
+                        0f, 0f, 0f, 1f, 0f,
+                    ),
+                ),
+            )
             setMultiTouchControls(true)
             zoomController.setVisibility(CustomZoomButtonsController.Visibility.NEVER)
             minZoomLevel = 3.0
