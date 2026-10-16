@@ -95,20 +95,44 @@ shot 34-wind
 
 tap_text "Danas"
 sleep 2
+tap_text "Lokacije"
+sleep 2
+shot 50-places
+tap_text "Traži grad ili mesto…"
+adb shell input text "Thessaloniki"
+sleep 6
+shot 51-search
+tap_text "Thessaloniki"
+sleep 12
+shot 52-thessaloniki
+scroll; shot 53-thessaloniki-scroll
+
 tap_text "Podešavanja"
 sleep 2
 shot 40-settings
 scroll; shot 41-settings-scroll
-adb shell input keyevent KEYCODE_BACK
+scroll; shot 42-settings-scroll2
+scroll
+tap_text "Tamna"
 sleep 2
+adb shell input keyevent KEYCODE_BACK
+sleep 3
 tap_text "Lokacije"
 sleep 2
-shot 50-places
-adb shell input text "Solun"
-sleep 6
-shot 51-search
-adb shell input keyevent KEYCODE_BACK
-sleep 1
+tap_text "Novi Beograd"
+sleep 8
+shot 60-dark-today
+scroll; shot 61-dark-scroll
+tap_text "Vazduh"
+sleep 2
+shot 62-dark-air
+tap_text "Radar"
+sleep 15
+shot 63-dark-radar
+tap_text "Temperatura"
+sleep 8
+shot 64-dark-temp
+tap_text "Danas"
 
 # run the background worker once (notifications/widget path)
 adb shell cmd jobscheduler run -f $PKG 0 >/dev/null 2>&1 || true

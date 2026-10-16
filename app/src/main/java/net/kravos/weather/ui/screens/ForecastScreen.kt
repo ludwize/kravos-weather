@@ -2,6 +2,8 @@ package net.kravos.weather.ui.screens
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -101,11 +103,11 @@ private fun HourlyTab(f: Forecast, u: Units) {
         }
         item {
             Section("Grafikon — 7 dana") {
-                Row(Modifier.fillMaxWidth().padding(horizontal = 12.dp), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                    HourChart.entries.take(3).forEach { c -> FilterChip(chart == c, { chart = c }, { Text(c.label) }) }
-                }
-                Row(Modifier.fillMaxWidth().padding(horizontal = 12.dp), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                    HourChart.entries.drop(3).forEach { c -> FilterChip(chart == c, { chart = c }, { Text(c.label) }) }
+                Row(
+                    Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(horizontal = 12.dp),
+                    horizontalArrangement = Arrangement.spacedBy(6.dp),
+                ) {
+                    HourChart.entries.forEach { c -> FilterChip(chart == c, { chart = c }, { Text(c.label, maxLines = 1) }) }
                 }
                 Spacer(Modifier.height(8.dp))
                 HourChartView(chart, hours, u)
@@ -139,7 +141,7 @@ private fun HourChartView(chart: HourChart, hours: List<Hour>, u: Units) {
         )
         HourChart.RAIN -> LineChart(
             listOf(Series(hours.map { it.precipProb.toDouble() }, RainBlue, fill = true)),
-            dayLabels, mod, fmt = { "${it.roundToInt()}%" }, labelEvery = 24,
+            dayLabels, mod, fmt = { "${it.roundToInt()}%" }, labelEvery = 24, floorZero = true,
         )
         HourChart.WIND -> LineChart(
             listOf(Series(hours.map { it.windGusts }, Color(0xFFEB8F5A), dashed = true), Series(hours.map { it.windSpeed }, Color(0xFF66BB6A), fill = true)),
@@ -220,7 +222,7 @@ private fun DailyTab(f: Forecast, u: Units) {
                 Spacer(Modifier.height(10.dp))
                 LineChart(
                     listOf(Series(days.map { it.precipSum }, RainBlue, fill = true)),
-                    emptyList(), Modifier.padding(horizontal = 12.dp), fmt = { "${it.roundToInt()}" }, height = 70.dp,
+                    emptyList(), Modifier.padding(horizontal = 12.dp), fmt = { "${it.roundToInt()}" }, height = 70.dp, floorZero = true,
                 )
                 Text("Gore: maks/min temperatura · dole: padavine (mm). Dani 11–16 su manje pouzdani.",
                     Modifier.padding(horizontal = 16.dp, vertical = 6.dp), style = MaterialTheme.typography.bodySmall,
@@ -318,7 +320,7 @@ private fun LongRangeTab(lr: LongRange?, f: Forecast, u: Units) {
                     xLabels = days.map { "${it.date.dayOfMonth}.${it.date.monthValue}." },
                     modifier = Modifier.padding(horizontal = 12.dp),
                     band = days.map { it.tMax?.high?.let(conv) } to days.map { it.tMin?.low?.let(conv) },
-                    fmt = { "${it.roundToInt()}°" }, height = 170.dp, labelEvery = 7,
+                    fmt = { "${it.roundToInt()}°" }, height = 170.dp, labelEvery = 10,
                 )
                 Text(
                     "Linije: prosek maks/min temperature svih članova ansambla. Senka: raspon (10–90%) — što je šira, to je prognoza nesigurnija.",
@@ -328,7 +330,7 @@ private fun LongRangeTab(lr: LongRange?, f: Forecast, u: Units) {
                 if (days.any { it.precip != null }) {
                     LineChart(
                         listOf(Series(days.map { it.precip?.mean }, RainBlue, fill = true)), emptyList(),
-                        Modifier.padding(horizontal = 12.dp), fmt = { String.format("%.1f", it) }, height = 70.dp,
+                        Modifier.padding(horizontal = 12.dp), fmt = { String.format("%.1f", it) }, height = 70.dp, floorZero = true,
                     )
                     Text("Očekivane dnevne padavine (mm)", Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
                         style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
@@ -341,7 +343,7 @@ private fun LongRangeTab(lr: LongRange?, f: Forecast, u: Units) {
                     val mn = w.mapNotNull { it.tMin?.mean }.average()
                     val pr = w.mapNotNull { it.precip?.mean }.sum()
                     Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 5.dp), verticalAlignment = Alignment.CenterVertically) {
-                        Text("${Fmt.dateShort(w.first().date)} – ${Fmt.dateShort(w.last().date)}", Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
+                        Text("${w.first().date.dayOfMonth}.${w.first().date.monthValue}. – ${w.last().date.dayOfMonth}.${w.last().date.monthValue}.", Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium, maxLines = 1)
                         if (!mn.isNaN()) Text(Fmt.temp(mn, u), Modifier.width(40.dp), color = MaterialTheme.colorScheme.onSurfaceVariant)
                         if (!mx.isNaN()) Text(Fmt.temp(mx, u), Modifier.width(40.dp), fontWeight = FontWeight.Medium)
                         Icon(Icons.Filled.Grain, null, Modifier.size(14.dp), tint = RainBlue)
@@ -367,7 +369,7 @@ private fun LongRangeTab(lr: LongRange?, f: Forecast, u: Units) {
                 if (w.any { it.precipAnomaly != null }) {
                     AnomalyBars(
                         w.map { it.precipAnomaly }, w.map { "${it.start.dayOfMonth}.${it.start.monthValue}." },
-                        RainBlue, Color(0xFFD9A066), { (if (it > 0) "+" else "") + String.format("%.1f", it) },
+                        RainBlue, Color(0xFFD9A066), { (if (it > 0) "+" else "") + String.format("%.0f mm", it) },
                         Modifier.padding(horizontal = 12.dp),
                     )
                     Text("Padavine vs. normala (plavo = vlažnije, smeđe = suvlje).",

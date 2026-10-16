@@ -122,13 +122,13 @@ private fun PollutantsCard(air: AirQuality) {
         Pollutant("Ozon", "O₃", air.o3, listOf(50.0, 100.0, 130.0, 240.0, 380.0, 800.0), "Raste za sunčanih i toplih dana"),
         Pollutant("Sumpor-dioksid", "SO₂", air.so2, listOf(100.0, 200.0, 350.0, 500.0, 750.0, 1250.0), "Termoelektrane i industrija"),
     )
-    Section("Zagađujuće materije (µg/m³)", icon = Icons.Filled.Info) {
+    Section("Zagađujuće materije", icon = Icons.Filled.Info) {
         list.forEach { p ->
             Column(Modifier.padding(horizontal = 16.dp, vertical = 6.dp)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(p.formula, Modifier.width(60.dp), fontWeight = FontWeight.SemiBold)
                     Text(p.name, Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
-                    Text(p.value?.roundToInt()?.toString() ?: "—", fontWeight = FontWeight.Medium)
+                    Text(p.value?.let { "${it.roundToInt()} µg/m³" } ?: "—", fontWeight = FontWeight.Medium)
                 }
                 val v = p.value ?: 0.0
                 val idx = p.bands.indexOfFirst { v < it }.let { if (it < 0) 5 else it }
@@ -198,6 +198,16 @@ private fun PollenCard(air: AirQuality) {
 }
 
 @Composable
+private fun PollenLegend() {
+    Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+        Fmt.POLLEN_LEVELS.forEach { b ->
+            Dot(b.color); Spacer(Modifier.width(4.dp))
+            Text(b.label, style = MaterialTheme.typography.labelSmall); Spacer(Modifier.width(10.dp))
+        }
+    }
+}
+
+@Composable
 private fun PollenTrend(air: AirQuality, today: LocalDate) {
     val days = (0..3).map { today.plusDays(it.toLong()) }
     val any = air.hours.any { h -> h.pollen.values.any { (it ?: 0.0) >= 1.0 } }
@@ -216,11 +226,11 @@ private fun PollenTrend(air: AirQuality, today: LocalDate) {
                 maxes.forEach { v ->
                     val band = Fmt.POLLEN_LEVELS[p.level(v)]
                     Row(Modifier.weight(1f), horizontalArrangement = androidx.compose.foundation.layout.Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
-                        Dot(band.color); Spacer(Modifier.width(4.dp))
-                        Text(band.label.take(6), style = MaterialTheme.typography.labelSmall)
+                        Dot(band.color, 14.dp)
                     }
                 }
             }
         }
+        PollenLegend()
     }
 }

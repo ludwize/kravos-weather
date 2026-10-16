@@ -70,22 +70,19 @@ fun SettingsScreen(
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
         if (tick < 0) Text("")
         Section("Jedinice") {
-            Row(Modifier.padding(horizontal = 16.dp), verticalAlignment = Alignment.CenterVertically) {
-                Text("Temperatura", Modifier.width(110.dp))
+            ChipGroup("Temperatura") {
                 TempUnit.entries.forEach { t ->
                     FilterChip(prefs.tempUnit == t, { onTemp(t); tick++ }, { Text("°${t.name}") }, Modifier.padding(end = 6.dp))
                 }
             }
-            Row(Modifier.padding(horizontal = 16.dp), verticalAlignment = Alignment.CenterVertically) {
-                Text("Vetar", Modifier.width(110.dp))
+            ChipGroup("Vetar") {
                 WindUnit.entries.forEach { w ->
                     FilterChip(prefs.windUnit == w, { onWind(w); tick++ }, { Text(w.label) }, Modifier.padding(end = 6.dp))
                 }
             }
         }
         Section("Izgled") {
-            Row(Modifier.padding(horizontal = 16.dp), verticalAlignment = Alignment.CenterVertically) {
-                Text("Tema", Modifier.width(110.dp))
+            ChipGroup("Tema") {
                 ThemeMode.entries.forEach { m ->
                     FilterChip(prefs.themeMode == m, { onTheme(m); tick++ }, { Text(m.label) }, Modifier.padding(end = 6.dp))
                 }
@@ -105,7 +102,7 @@ fun SettingsScreen(
             Toggle("Kiša uskoro", "Kad padavine počinju u narednih ~60 minuta", prefs.notifyRain) { prefs.notifyRain = it }
             Toggle("Grmljavina i jak vetar", "Oluja ili udari vetra preko 60 km/h u narednih 12 h", prefs.notifyStorm) { prefs.notifyStorm = it }
             Toggle("Jutarnji pregled", "Svako jutro u ${prefs.morningHour}h: temperatura, kiša, vazduh, polen", prefs.notifyMorning) { prefs.notifyMorning = it }
-            if (prefs.notifyMorning) Row(Modifier.padding(horizontal = 16.dp)) {
+            if (prefs.notifyMorning) ChipGroup("Vreme jutarnjeg pregleda") {
                 listOf(6, 7, 8, 9).forEach { h ->
                     FilterChip(prefs.morningHour == h, { prefs.morningHour = h; tick++ }, { Text("${h}h") }, Modifier.padding(end = 6.dp))
                 }
@@ -114,12 +111,8 @@ fun SettingsScreen(
             Toggle("Loš vazduh", "Kad EAQI pređe granicu „loš“", prefs.notifyAir) { prefs.notifyAir = it }
             Toggle("Visok polen", "Kad je polen koji pratiš visok", prefs.notifyPollen) { prefs.notifyPollen = it }
             if (prefs.notifyPollen) {
-                Text("Pratim:", Modifier.padding(horizontal = 16.dp), style = MaterialTheme.typography.bodySmall)
-                Row(Modifier.padding(horizontal = 16.dp)) {
-                    Pollen.entries.take(3).forEach { p -> PollenChip(prefs, p) { tick++ } }
-                }
-                Row(Modifier.padding(horizontal = 16.dp)) {
-                    Pollen.entries.drop(3).forEach { p -> PollenChip(prefs, p) { tick++ } }
+                ChipGroup("Polen koji pratim") {
+                    Pollen.entries.forEach { p -> PollenChip(prefs, p) { tick++ } }
                 }
             }
             OutlinedButton(onClick = { RefreshWorker.runNow(ctx) }, modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
@@ -166,4 +159,13 @@ private fun PollenChip(prefs: Prefs, p: Pollen, changed: () -> Unit) {
         prefs.pollenWatch = if (on) prefs.pollenWatch - p.name else prefs.pollenWatch + p.name
         changed()
     }, { Text(p.label) }, Modifier.padding(end = 6.dp))
+}
+
+@OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
+@Composable
+private fun ChipGroup(label: String, content: @Composable () -> Unit) {
+    Column(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 4.dp)) {
+        Text(label, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        androidx.compose.foundation.layout.FlowRow { content() }
+    }
 }

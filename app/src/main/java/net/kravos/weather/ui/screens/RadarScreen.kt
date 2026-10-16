@@ -50,7 +50,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
@@ -71,7 +70,8 @@ import net.kravos.weather.util.Units
 import org.osmdroid.events.MapListener
 import org.osmdroid.events.ScrollEvent
 import org.osmdroid.events.ZoomEvent
-import org.osmdroid.tileprovider.tilesource.XYTileSource
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory
+import org.osmdroid.views.overlay.TilesOverlay
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.CustomZoomButtonsController
 import org.osmdroid.views.MapView
@@ -92,20 +92,10 @@ private fun MapMode.grid(): GridLayer? = when (this) {
     MapMode.CLOUDS -> GridLayer.CLOUDS
 }
 
-private fun baseTiles(dark: Boolean) = XYTileSource(
-    if (dark) "CartoDark" else "CartoLight", 1, 18, 256, ".png",
-    arrayOf(
-        "https://a.basemaps.cartocdn.com/${if (dark) "dark_all" else "rastertiles/voyager"}/",
-        "https://b.basemaps.cartocdn.com/${if (dark) "dark_all" else "rastertiles/voyager"}/",
-        "https://c.basemaps.cartocdn.com/${if (dark) "dark_all" else "rastertiles/voyager"}/",
-    ),
-    "© OpenStreetMap, © CARTO",
-)
-
 @Composable
 fun RadarScreen(place: Place, u: Units) {
     val ctx = LocalContext.current
-    val dark = isSystemInDarkTheme() || MaterialTheme.colorScheme.background.luminanceLow()
+    val dark = MaterialTheme.colorScheme.background.luminanceLow()
     val scope = rememberCoroutineScope()
 
     var mode by remember { mutableStateOf(MapMode.RADAR) }
@@ -120,13 +110,14 @@ fun RadarScreen(place: Place, u: Units) {
 
     val mapView = remember {
         MapView(ctx).apply {
-            setTileSource(baseTiles(dark))
+            setTileSource(TileSourceFactory.MAPNIK)
+            if (dark) overlayManager.tilesOverlay.setColorFilter(TilesOverlay.INVERTED_COLORS)
             setMultiTouchControls(true)
             zoomController.setVisibility(CustomZoomButtonsController.Visibility.NEVER)
             minZoomLevel = 3.0
             maxZoomLevel = 12.0
             isTilesScaledToDpi = true
-            controller.setZoom(7.0)
+            controller.setZoom(6.0)
             controller.setCenter(GeoPoint(place.lat, place.lon))
             setHorizontalMapRepetitionEnabled(false)
             overlays.add(CopyrightOverlay(ctx))
@@ -337,7 +328,7 @@ fun RadarScreen(place: Place, u: Units) {
                         }
                     }
                     Legend(Scales.PRECIP.drop(1), "slabo", "jako")
-                    Text("Radar: poslednja 2 sata. Za budućnost izaberi „Padavine — prognoza“. Radar © RainViewer",
+                    Text("Radar: poslednja 2 sata. Za budućnost izaberi „Padavine — prognoza“. Radar © RainViewer · Mapa © OpenStreetMap",
                         style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 } else {
                     val g = grid

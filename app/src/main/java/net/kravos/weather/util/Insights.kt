@@ -61,7 +61,10 @@ object Insights {
         val rest = f.hours.filter { it.time.toLocalDate() == today.date && !it.time.isBefore(now.withMinute(0)) }
         val rainy = rest.filter { it.precipProb >= 50 && it.precip >= 0.2 }
         val parts = ArrayList<String>()
-        parts += Wx.describe(today.code).replaceFirstChar { it.uppercase() }
+        // The daily code is the day's worst hour; describe the typical sky for the rest of the day instead.
+        val sky = rest.filter { it.time.hour in 7..20 }.ifEmpty { rest }
+        val typical = sky.groupingBy { if (it.code == 1) 0 else it.code }.eachCount().maxByOrNull { it.value }?.key ?: today.code
+        parts += Wx.describe(typical).replaceFirstChar { it.uppercase() }
         if (rainy.isNotEmpty()) {
             val h = rainy.first().time.hour
             val when_ = when (h) { in 0..5 -> "noću"; in 6..11 -> "pre podne"; in 12..17 -> "popodne"; else -> "uveče" }

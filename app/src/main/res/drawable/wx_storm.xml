@@ -2,7 +2,9 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="64dp" android:height="64dp" android:viewportWidth="64" android:viewportHeight="64">
     <path android:fillColor="#FF8E9BAD" android:pathData="M18.8,38 L49.6,38 A9.9,9.9 0 0,0 50.7,18.42 A14.3,14.3 0 0,0 23.2,21.5 A8.8,8.8 0 0,0 18.8,38 Z" />
-    <path android:fillColor="#FF6F7C8F" android:pathData="M18.8,38 L49.6,38 A9.9,9.9 0 0,0 59.06,31.4 L11.65,31.4 A8.8,8.8 0 0,0 18.8,38 Z" />
+    <group><clip-path android:pathData="M8,31.4 L65,31.4 L65,40 L8,40 Z" />
+        <path android:fillColor="#FF6F7C8F" android:pathData="M18.8,38 L49.6,38 A9.9,9.9 0 0,0 50.7,18.42 A14.3,14.3 0 0,0 23.2,21.5 A8.8,8.8 0 0,0 18.8,38 Z" /></group>
+    <path android:strokeColor="#FF8797AD" android:strokeWidth="1.6" android:strokeLineCap="round" android:pathData="M18.8,38 L49.6,38 A9.9,9.9 0 0,0 50.7,18.42 A14.3,14.3 0 0,0 23.2,21.5 A8.8,8.8 0 0,0 18.8,38 Z" />
     <path android:fillColor="#FFFFD54F" android:pathData="M34,38 L26,50 L31,50 L27,60 L38,46 L33,46 L37,38 Z" />
     <path android:strokeColor="#FF4FA3F7" android:strokeWidth="3.0" android:strokeLineCap="round" android:pathData="M18,43 L15.5,50 M48,43 L45.5,50" />
 </vector>

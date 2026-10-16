@@ -56,6 +56,10 @@ private fun DrawScope.smoothPath(pts: List<Offset>): Path {
     return p
 }
 
+private fun linePath(pts: List<Offset>): Path = Path().apply {
+    pts.forEachIndexed { i, p -> if (i == 0) moveTo(p.x, p.y) else lineTo(p.x, p.y) }
+}
+
 private fun DrawScope.label(text: String, x: Float, y: Float, color: Color, sizeSp: Float = 12f, bold: Boolean = false) {
     val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         this.color = color.toArgb(); textSize = sizeSp * density * fontScale; textAlign = Paint.Align.CENTER
@@ -173,6 +177,7 @@ fun LineChart(
     height: Dp = 150.dp,
     zeroLine: Boolean = false,
     labelEvery: Int = 0,
+    floorZero: Boolean = false,
 ) {
     val muted = MaterialTheme.colorScheme.onSurfaceVariant
     val grid = MaterialTheme.colorScheme.outlineVariant
@@ -183,6 +188,7 @@ fun LineChart(
     if (hi - lo < 1e-6) { hi += 1; lo -= 1 }
     val pad = (hi - lo) * 0.08
     lo -= pad; hi += pad
+    if (floorZero) lo = maxOf(lo, 0.0)
     val n = series.maxOf { it.values.size }
     Column(modifier) {
         Canvas(Modifier.fillMaxWidth().height(height)) {
@@ -206,7 +212,7 @@ fun LineChart(
             series.forEach { s ->
                 val pts = s.values.mapIndexedNotNull { i, v -> v?.let { Offset(x(i), y(it)) } }
                 if (pts.size < 2) return@forEach
-                val path = smoothPath(pts)
+                val path = if (floorZero) linePath(pts) else smoothPath(pts)
                 if (s.fill) {
                     val f = Path().apply { addPath(path); lineTo(pts.last().x, h); lineTo(pts.first().x, h); close() }
                     drawPath(f, Brush.verticalGradient(listOf(s.color.copy(alpha = 0.3f), Color.Transparent)))

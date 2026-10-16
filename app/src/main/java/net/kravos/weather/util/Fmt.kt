@@ -127,7 +127,9 @@ object Fmt {
         else -> "Izbegavaj boravak i vežbanje napolju, zatvori prozore."
     }
 
-    fun uv(v: Double): Band = when {
+    fun uv(raw: Double): Band = raw.roundToInt().toDouble().let { v -> uvBand(v) }
+
+    private fun uvBand(v: Double): Band = when {
         v < 3 -> Band("Nizak", Color(0xFF50C878))
         v < 6 -> Band("Umeren", Color(0xFFF2C94C))
         v < 8 -> Band("Visok", Color(0xFFF2994A))
