@@ -48,12 +48,3 @@ shot 41-settings-dark
 shot 42-settings-scroll2
 tapped Lokacije
 tapped Novi Beograd
-shot 60-dark-today
-shot 61-dark-scroll
-tapped Vazduh
-shot 62-dark-air
-tapped Radar
-shot 63-dark-radar
-tapped Temperatura
-shot 64-dark-temp
-tapped Danas

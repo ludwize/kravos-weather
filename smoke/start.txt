@@ -2,6 +2,6 @@ Starting: Intent { cmp=net.kravos.weather/.ui.MainActivity }
 Status: ok
 LaunchState: COLD
 Activity: net.kravos.weather/.ui.MainActivity
-TotalTime: 2771
-WaitTime: 2775
+TotalTime: 1459
+WaitTime: 1470
 Complete
