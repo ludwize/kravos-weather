@@ -62,6 +62,11 @@ jobs:
           path: out/*.apk
           retention-days: 14
 
+      - name: Publish APK to ci-logs branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash .github/scripts/publish-log.sh apk out
+
       - name: GitHub release
         uses: softprops/action-gh-release@v2
         with:
