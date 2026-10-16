@@ -1,0 +1,43 @@
+59:> Task :app:compileReleaseKotlin FAILED
+60:e: file:///home/runner/work/kravos-weather/kravos-weather/app/src/main/java/net/kravos/weather/ui/MainViewModel.kt:46:28 Unresolved reference 'repo'.
+61:e: file:///home/runner/work/kravos-weather/kravos-weather/app/src/main/java/net/kravos/weather/ui/MainViewModel.kt:57:42 Cannot infer type for this parameter. Please specify it explicitly.
+62:e: file:///home/runner/work/kravos-weather/kravos-weather/app/src/main/java/net/kravos/weather/ui/MainViewModel.kt:57:42 Not enough information to infer type argument for 'R'.
+63:e: file:///home/runner/work/kravos-weather/kravos-weather/app/src/main/java/net/kravos/weather/ui/MainViewModel.kt:57:76 Cannot infer type for this parameter. Please specify it explicitly.
+64:e: file:///home/runner/work/kravos-weather/kravos-weather/app/src/main/java/net/kravos/weather/ui/MainViewModel.kt:57:76 Not enough information to infer type argument for 'R'.
+65:e: file:///home/runner/work/kravos-weather/kravos-weather/app/src/main/java/net/kravos/weather/ui/MainViewModel.kt:57:80 Cannot infer type for this parameter. Please specify it explicitly.
+66:e: file:///home/runner/work/kravos-weather/kravos-weather/app/src/main/java/net/kravos/weather/ui/MainViewModel.kt:57:87 Cannot infer type for this parameter. Please specify it explicitly.
+67:e: file:///home/runner/work/kravos-weather/kravos-weather/app/src/main/java/net/kravos/weather/ui/MainViewModel.kt:57:87 Not enough information to infer type argument for 'B'.
+68:e: file:///home/runner/work/kravos-weather/kravos-weather/app/src/main/java/net/kravos/weather/ui/MainViewModel.kt:57:97 Cannot infer type for this parameter. Please specify it explicitly.
+69:e: file:///home/runner/work/kravos-weather/kravos-weather/app/src/main/java/net/kravos/weather/ui/MainViewModel.kt:57:97 Not enough information to infer type argument for 'K'.
+70:e: file:///home/runner/work/kravos-weather/kravos-weather/app/src/main/java/net/kravos/weather/ui/MainViewModel.kt:57:97 Not enough information to infer type argument for 'V'.
+71:e: file:///home/runner/work/kravos-weather/kravos-weather/app/src/main/java/net/kravos/weather/ui/screens/ForecastScreen.kt:72:9 This material API is experimental and is likely to change or to be removed in the future.
+72:e: file:///home/runner/work/kravos-weather/kravos-weather/app/src/main/java/net/kravos/weather/widget/WeatherWidget.kt:76:47 No type arguments expected for fun actionStartActivity(intent: Intent, parameters: ActionParameters = ...): Action.
+73:e: file:///home/runner/work/kravos-weather/kravos-weather/app/src/main/java/net/kravos/weather/widget/WeatherWidget.kt:76:61 No value passed for parameter 'intent'.
+74-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_2-1792141321365.json
+75-
+76:FAILURE: Build failed with an exception.
+77-
+78:* What went wrong:
+79:Execution failed for task ':app:compileReleaseKotlin'.
+80-> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+81-   > Compilation error. See log for more details
+82-
+83-* Try:
+--
+89:org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:compileReleaseKotlin'.
+90-	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:130)
+91-	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:293)
+92-	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:128)
+93-	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
+--
+121:Caused by: org.gradle.workers.internal.DefaultWorkerExecutor$WorkExecutionException: A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+122-	at org.gradle.workers.internal.DefaultWorkerExecutor$WorkItemExecution.waitForCompletion(DefaultWorkerExecutor.java:287)
+123-	at org.gradle.internal.work.DefaultAsyncWorkTracker.lambda$waitForItemsAndGatherFailures$2(DefaultAsyncWorkTracker.java:130)
+124-	at org.gradle.internal.Factories$1.create(Factories.java:31)
+125-	at org.gradle.internal.work.DefaultWorkerLeaseService.withoutLocks(DefaultWorkerLeaseService.java:335)
+--
+250:Caused by: org.jetbrains.kotlin.gradle.tasks.CompilationErrorException: Compilation error. See log for more details
+251-	at org.jetbrains.kotlin.gradle.tasks.TasksUtilsKt.throwExceptionIfCompilationFailed(tasksUtils.kt:21)
+252-	at org.jetbrains.kotlin.compilerRunner.GradleKotlinCompilerWork.run(GradleKotlinCompilerWork.kt:119)
+253-	at org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction.execute(GradleCompilerRunnerWithWorkers.kt:76)
+254-	at org.gradle.workers.internal.DefaultWorkerServer.execute(DefaultWorkerServer.java:63)
