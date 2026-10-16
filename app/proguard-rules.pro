@@ -1,0 +1,7 @@
+-keep class net.kravos.weather.widget.** { *; }
+-keep class net.kravos.weather.work.** { *; }
+-dontwarn org.checkerframework.**
+-dontwarn com.google.errorprone.annotations.**
+-dontwarn javax.annotation.**
+-dontwarn com.google.j2objc.annotations.**
+-dontwarn org.osmdroid.**
