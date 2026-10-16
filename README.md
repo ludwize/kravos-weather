@@ -19,4 +19,4 @@ Open-Meteo (forecast, air-quality, seasonal, geocoding), Copernicus CAMS, EUMETN
 ## Build
 
 GitHub Actions builduje potpisan APK na svaki push na `main` i kači ga na Releases.
-Potpisivanje koristi isti ključ kao Kravos Player: `signing/release.jks.enc`, a CI treba repo secret `KP_SIGNING_PASS`.
+Potpisivanje: `signing/release.jks.enc` (sopstveni ključ ove aplikacije), CI treba repo secret `KP_SIGNING_PASS`.
