@@ -1,0 +1,42 @@
+not found: Allow
+not found: While using the app
+shot 01-today
+shot 02-today-scroll
+shot 03-today-scroll
+shot 04-today-scroll
+shot 05-today-scroll
+shot 06-today-scroll
+shot 07-today-scroll
+tapped Prognoza
+shot 10-hourly
+shot 11-hourly-scroll
+tapped 16 dana
+shot 12-daily
+shot 13-daily-scroll
+tapped Dugoročno
+shot 14-long
+shot 15-long-scroll
+shot 16-long-scroll2
+tapped Vazduh
+shot 20-air
+shot 21-air-scroll
+shot 22-air-scroll2
+shot 23-air-scroll3
+tapped Radar
+shot 30-radar
+tapped Pusti
+shot 31-radar-play
+tapped Pauza
+tapped Padavine — prognoza
+shot 32-precip-fc
+tapped Temperatura
+shot 33-temp
+not found: Vetar
+shot 34-wind
+tapped Danas
+tapped Podešavanja
+shot 40-settings
+shot 41-settings-scroll
+tapped Lokacije
+shot 50-places
+shot 51-search
