@@ -34,9 +34,26 @@ shot 33-temp
 not found: Vetar
 shot 34-wind
 tapped Danas
+tapped Lokacije
+shot 50-places
+tapped Traži grad ili mesto…
+shot 51-search
+tapped Solun
+shot 52-thessaloniki
+shot 53-thessaloniki-scroll
 tapped Podešavanja
 shot 40-settings
 shot 41-settings-scroll
+shot 42-settings-scroll2
+not found: Tamna
 tapped Lokacije
-shot 50-places
-shot 51-search
+tapped Novi Beograd
+shot 60-dark-today
+shot 61-dark-scroll
+tapped Vazduh
+shot 62-dark-air
+tapped Radar
+shot 63-dark-radar
+tapped Temperatura
+shot 64-dark-temp
+tapped Danas
