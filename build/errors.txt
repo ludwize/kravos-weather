@@ -1,6 +1,6 @@
 47:> Task :app:compileReleaseKotlin FAILED
 48:e: file:///home/runner/work/kravos-weather/kravos-weather/app/src/main/java/net/kravos/weather/ui/screens/RadarScreen.kt:114:79 Unresolved reference 'INVERTED_COLORS'.
-49-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_2-1792142167368.json
+49-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_2-1792142224012.json
 50-
 51:FAILURE: Build failed with an exception.
 52-

@@ -17,15 +17,15 @@ Unable to strip the following libraries, packaging them as they are: libandroidx
 > Task :app:generateReleaseResValues FROM-CACHE
 > Task :app:checkReleaseAarMetadata
 > Task :app:mapReleaseSourceSetPaths
-> Task :app:generateReleaseResources
-> Task :app:packageReleaseResources
+> Task :app:generateReleaseResources FROM-CACHE
+> Task :app:mergeReleaseResources FROM-CACHE
+> Task :app:packageReleaseResources FROM-CACHE
+> Task :app:parseReleaseLocalResources FROM-CACHE
 > Task :app:createReleaseCompatibleScreenManifests
 > Task :app:extractDeepLinksRelease FROM-CACHE
-> Task :app:parseReleaseLocalResources
 > Task :app:processReleaseMainManifest
 > Task :app:processReleaseManifest
 > Task :app:javaPreCompileRelease FROM-CACHE
-> Task :app:processReleaseManifestForPackage
 > Task :app:mergeReleaseArtProfile
 > Task :app:extractProguardFiles
 > Task :app:mergeReleaseStartupProfile
@@ -35,18 +35,18 @@ Unable to strip the following libraries, packaging them as they are: libandroidx
 > Task :app:mergeReleaseAssets
 > Task :app:compressReleaseAssets FROM-CACHE
 > Task :app:extractReleaseVersionControlInfo
-> Task :app:mergeReleaseResources
 > Task :app:collectReleaseDependencies
 > Task :app:sdkReleaseDependencyData
-> Task :app:processReleaseResources
 > Task :app:validateSigningRelease
+> Task :app:processReleaseManifestForPackage
 > Task :app:writeReleaseAppMetadata
 > Task :app:writeReleaseSigningConfigVersions
+> Task :app:processReleaseResources
 > Task :app:convertLinkedResourcesToProtoRelease
 
 > Task :app:compileReleaseKotlin FAILED
 e: file:///home/runner/work/kravos-weather/kravos-weather/app/src/main/java/net/kravos/weather/ui/screens/RadarScreen.kt:114:79 Unresolved reference 'INVERTED_COLORS'.
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_2-1792142167368.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_2-1792142224012.json
 
 FAILURE: Build failed with an exception.
 
@@ -256,4 +256,4 @@ Caused by: org.jetbrains.kotlin.gradle.tasks.CompilationErrorException: Compilat
 
 
 BUILD FAILED in 33s
-35 actionable tasks: 30 executed, 5 from cache
+35 actionable tasks: 26 executed, 9 from cache
