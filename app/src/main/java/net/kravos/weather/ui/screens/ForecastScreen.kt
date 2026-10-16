@@ -65,6 +65,7 @@ import net.kravos.weather.util.Wx
 import java.time.LocalDate
 import kotlin.math.roundToInt
 
+@OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
 @Composable
 fun ForecastScreen(bundle: Bundle, u: Units, tab: Int, onTab: (Int) -> Unit) {
     val f = bundle.forecast ?: return

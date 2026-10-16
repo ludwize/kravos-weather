@@ -43,7 +43,7 @@ data class UiState(
 class MainViewModel(app: Application) : AndroidViewModel(app) {
     private val ctx = app
     private val prefs = (app as App).prefs
-    private val repo = app.repo
+    private val repo = (app as App).repo
 
     private val _state = MutableStateFlow(UiState())
     val state: StateFlow<UiState> = _state.asStateFlow()
