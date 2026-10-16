@@ -110,10 +110,10 @@ scroll; shot 53-thessaloniki-scroll
 tap_text "Podešavanja"
 sleep 2
 shot 40-settings
-scroll; shot 41-settings-scroll
-scroll; shot 42-settings-scroll2
-scroll
 tap_text "Tamna"
+sleep 2
+shot 41-settings-dark
+scroll; shot 42-settings-scroll2
 sleep 2
 adb shell input keyevent KEYCODE_BACK
 sleep 3
