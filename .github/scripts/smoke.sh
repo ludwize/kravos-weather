@@ -102,7 +102,7 @@ tap_text "Traži grad ili mesto…"
 adb shell input text "Thessaloniki"
 sleep 6
 shot 51-search
-tap_text "Thessaloniki"
+tap_text "Solun"
 sleep 12
 shot 52-thessaloniki
 scroll; shot 53-thessaloniki-scroll
