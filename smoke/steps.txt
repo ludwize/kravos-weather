@@ -43,9 +43,9 @@ shot 52-thessaloniki
 shot 53-thessaloniki-scroll
 tapped Podešavanja
 shot 40-settings
-shot 41-settings-scroll
+tapped Tamna
+shot 41-settings-dark
 shot 42-settings-scroll2
-not found: Tamna
 tapped Lokacije
 tapped Novi Beograd
 shot 60-dark-today
