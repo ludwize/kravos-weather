@@ -16,6 +16,10 @@ Lična Android aplikacija za vremensku prognozu (sideload), po uzoru na Weather 
 
 Open-Meteo (forecast, air-quality, seasonal, geocoding), Copernicus CAMS, EUMETNET Meteoalarm, RainViewer, OpenStreetMap/CARTO.
 
+## Web verzija
+
+`web/index.html` je statična stranica (Danas, Prognoza, Vazduh i polen, Radar, Dugoročno) koja podatke učitava direktno iz Open-Meteo i RainViewer u pregledaču. Objavljuje se na GitHub Pages preko `.github/workflows/web.yml`. Bez widgeta, obaveštenja i upozorenja (to ostaje u Android aplikaciji).
+
 ## Build
 
 GitHub Actions builduje potpisan APK na svaki push na `main` i kači ga na Releases.

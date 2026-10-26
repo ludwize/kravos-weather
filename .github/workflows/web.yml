@@ -1,0 +1,59 @@
+name: web
+
+# Publishes the static web edition (web/index.html) to GitHub Pages.
+# Weather data is fetched live in the visitor's browser (Open-Meteo, RainViewer), so no scheduled rebuild is needed.
+on:
+  push:
+    branches: [main]
+    paths: ['web/**', '.github/workflows/web.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      url: ${{ steps.deploy.outputs.page_url }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Assemble site
+        run: |
+          mkdir site
+          cp web/index.html site/
+          printf 'User-agent: *\nDisallow: /\n' > site/robots.txt
+          touch site/.nojekyll
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deploy
+        uses: actions/deploy-pages@v4
+
+  check:
+    needs: publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Screenshot the live site
+        run: |
+          pip install --quiet playwright && python3 -m playwright install --with-deps chromium > /dev/null
+          mkdir -p webcheck && sleep 20
+          python3 web/check/shots.py "${{ needs.publish.outputs.url }}" webcheck || echo "check failed" >> webcheck/stats.txt
+      - env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash .github/scripts/publish-log.sh web webcheck

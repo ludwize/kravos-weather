@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#2F80ED">
+<title>Kravos Vreme</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232F80ED'/%3E%3Ccircle cx='24' cy='24' r='9' fill='%23FFD54F'/%3E%3Cpath d='M20 46a9 9 0 0 1 1-18 12 12 0 0 1 23 3 8 8 0 0 1-1 15z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+:root {
+  --bg: #F4F6FA; --card: #FFFFFF; --ink: #14181F; --dim: #5F6B7A; --rule: #E2E7EE; --accent: #2F80ED;
+  --chip: #E9EEF6; --good: #2E9E5B; --shadow: 0 6px 24px rgba(20, 30, 50, .08);
+  --sans: Inter, -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0C1016; --card: #151B24; --ink: #E8ECF2; --dim: #8D99A8; --rule: #232C38; --accent: #6FA8FF;
+    --chip: #1E2733; --shadow: 0 6px 24px rgba(0, 0, 0, .45);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0C1016; --card: #151B24; --ink: #E8ECF2; --dim: #8D99A8; --rule: #232C38; --accent: #6FA8FF;
+  --chip: #1E2733; --shadow: 0 6px 24px rgba(0, 0, 0, .45);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); }
+body { font-family: var(--sans); font-size: 15px; line-height: 1.45; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+button, input, select { font: inherit; color: inherit; }
+button { background: none; border: 0; cursor: pointer; padding: 0; }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+
+/* top bar */
+header.top { position: sticky; top: 0; z-index: 20; background: var(--bg); border-bottom: 1px solid var(--rule); }
+.bar { display: flex; align-items: center; gap: 10px; padding: 10px 0; }
+.logo { font-weight: 800; letter-spacing: -.02em; font-size: 18px; white-space: nowrap; }
+.logo b { color: var(--accent); }
+.search { position: relative; flex: 1; max-width: 420px; min-width: 0; }
+@media (max-width: 560px) { .logo { font-size: 15px; } }
+.search input { width: 100%; padding: 9px 14px; border-radius: 999px; border: 1px solid var(--rule); background: var(--card); outline: none; }
+.search input:focus { border-color: var(--accent); }
+.results { position: absolute; left: 0; right: 0; top: 44px; background: var(--card); border: 1px solid var(--rule); border-radius: 14px; box-shadow: var(--shadow); overflow: hidden; display: none; }
+.results.on { display: block; }
+.results button { display: block; width: 100%; text-align: left; padding: 10px 14px; }
+.results button:hover, .results button:focus { background: var(--chip); }
+.results small { color: var(--dim); display: block; }
+.iconbtn { width: 38px; height: 38px; border-radius: 50%; background: var(--chip); display: grid; place-items: center; flex: none; }
+.iconbtn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+nav.tabs { display: flex; gap: 6px; overflow-x: auto; padding: 0 0 10px; scrollbar-width: none; }
+nav.tabs::-webkit-scrollbar { display: none; }
+nav.tabs button { padding: 7px 14px; border-radius: 999px; background: var(--chip); color: var(--dim); font-weight: 600; white-space: nowrap; }
+nav.tabs button.on { background: var(--accent); color: #fff; }
+.places { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 10px; scrollbar-width: none; }
+.places::-webkit-scrollbar { display: none; }
+.places button { padding: 4px 12px; border-radius: 999px; border: 1px solid var(--rule); color: var(--dim); font-size: 13px; white-space: nowrap; }
+.places button.on { border-color: var(--accent); color: var(--accent); }
+
+main { padding: 16px 0 60px; }
+.grid { display: grid; gap: 14px; grid-template-columns: repeat(12, 1fr); }
+.card { background: var(--card); border-radius: 18px; padding: 16px; box-shadow: var(--shadow); min-width: 0; }
+.card h3 { margin: 0 0 10px; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--dim); font-weight: 700; }
+.c12 { grid-column: span 12; } .c8 { grid-column: span 8; } .c6 { grid-column: span 6; } .c4 { grid-column: span 4; } .c3 { grid-column: span 3; }
+@media (max-width: 860px) { .c8, .c6, .c4 { grid-column: span 12; } .c3 { grid-column: span 6; } }
+
+.hero { color: #fff; padding: 22px; border-radius: 22px; display: flex; gap: 18px; align-items: center; flex-wrap: wrap; box-shadow: var(--shadow); }
+.hero .big { font-size: 76px; font-weight: 300; line-height: 1; letter-spacing: -.04em; }
+.hero .meta { flex: 1; min-width: 200px; }
+.hero .name { font-size: 20px; font-weight: 700; }
+.hero .desc { font-size: 18px; opacity: .95; }
+.hero .sub { opacity: .85; font-size: 14px; margin-top: 4px; }
+.hero svg.wxi { width: 96px; height: 96px; }
+.hero .stats { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 12px; font-size: 13px; }
+.hero .stats b { display: block; font-size: 16px; }
+.now-text { margin-top: 10px; background: rgba(255,255,255,.18); padding: 8px 12px; border-radius: 12px; font-size: 14px; }
+
+.tiles { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+.tile { background: var(--chip); border-radius: 14px; padding: 12px; }
+.tile .k { font-size: 12px; color: var(--dim); font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+.tile .v { font-size: 22px; font-weight: 600; margin-top: 2px; }
+.tile .s { font-size: 12px; color: var(--dim); }
+
+.hours { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; }
+.hr { flex: none; width: 62px; text-align: center; padding: 8px 0; border-radius: 12px; background: var(--chip); font-size: 13px; }
+.hr svg.wxi { width: 30px; height: 30px; margin: 2px 0; }
+.hr .t { font-weight: 700; font-size: 16px; }
+.hr .p { color: var(--accent); font-size: 12px; min-height: 16px; }
+.hr .h { color: var(--dim); }
+
+.days { display: flex; flex-direction: column; }
+.day { display: grid; grid-template-columns: 74px 36px 44px 1fr 90px; gap: 10px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--rule); font-size: 14px; }
+.day:last-child { border-bottom: 0; }
+.day .dn { font-weight: 700; } .day .dd { color: var(--dim); font-size: 12px; font-weight: 400; display: block; }
+.day svg.wxi { width: 32px; height: 32px; }
+.day .pp { color: var(--accent); font-size: 13px; }
+.rng { position: relative; height: 8px; border-radius: 4px; background: var(--chip); }
+.rng i { position: absolute; top: 0; bottom: 0; border-radius: 4px; background: linear-gradient(90deg, #4FA3FF, #FFB347, #FF6B5E); }
+.day .tt { text-align: right; font-variant-numeric: tabular-nums; } .day .tt span { color: var(--dim); }
+@media (max-width: 560px) { .day { grid-template-columns: 58px 30px 34px 1fr 74px; gap: 6px; } }
+
+svg.chart { width: 100%; height: auto; display: block; overflow: visible; }
+svg.chart text { fill: var(--dim); font-size: 11px; font-family: var(--sans); }
+.seg { display: inline-flex; background: var(--chip); border-radius: 999px; padding: 3px; gap: 2px; }
+.seg button { padding: 5px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; color: var(--dim); }
+.seg button.on { background: var(--card); color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,.15); }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+
+.aqi { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.aqi .n { font-size: 56px; font-weight: 300; line-height: 1; }
+.aqi .l { font-size: 20px; font-weight: 700; }
+.meter { height: 10px; border-radius: 5px; background: linear-gradient(90deg, #50C878 0 20%, #A3D65C 20% 40%, #F2C94C 40% 60%, #F2994A 60% 80%, #EB5757 80% 100%); position: relative; margin: 12px 0 4px; }
+.meter i { position: absolute; top: -4px; width: 4px; height: 18px; border-radius: 2px; background: var(--ink); transform: translateX(-2px); }
+table.pol { width: 100%; border-collapse: collapse; font-size: 14px; }
+table.pol th { text-align: left; color: var(--dim); font-weight: 600; font-size: 12px; padding: 4px 6px; }
+table.pol td { padding: 6px; border-top: 1px solid var(--rule); }
+.pill { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; color: #111; }
+
+#map { height: 62vh; min-height: 380px; border-radius: 18px; overflow: hidden; }
+.dark-map .osm { filter: invert(1) hue-rotate(180deg) brightness(.9) contrast(.9); }
+.ctl { display: flex; align-items: center; gap: 12px; margin-top: 10px; }
+.ctl input[type=range] { flex: 1; }
+.ctl .tm { min-width: 150px; text-align: right; font-variant-numeric: tabular-nums; color: var(--dim); font-size: 13px; }
+
+.alert { border-left: 6px solid; border-radius: 12px; padding: 10px 14px; background: var(--chip); margin-bottom: 8px; }
+.alert b { display: block; }
+.note { color: var(--dim); font-size: 13px; }
+.err { padding: 18px; text-align: center; color: var(--dim); }
+.skel { height: 120px; border-radius: 18px; background: linear-gradient(90deg, var(--chip), var(--card), var(--chip)); background-size: 200% 100%; animation: sk 1.4s infinite; }
+@keyframes sk { to { background-position: -200% 0; } }
+.set label { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--rule); gap: 10px; }
+footer { color: var(--dim); font-size: 12px; text-align: center; padding: 20px 16px 40px; }
+footer a { text-decoration: underline; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="bar">
+      <div class="logo">Kravos <b>Vreme</b></div>
+      <div class="search">
+        <input id="q" type="search" placeholder="Pretraži mesto…" autocomplete="off" aria-label="Pretraga mesta">
+        <div class="results" id="res"></div>
+      </div>
+      <button class="iconbtn" id="gps" title="Moja lokacija" aria-label="Moja lokacija"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="7"/></svg></button>
+      <button class="iconbtn" id="cfg" title="Podešavanja" aria-label="Podešavanja"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3h0a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5h0a1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8v0a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
+    </div>
+    <div class="places" id="places"></div>
+    <nav class="tabs" id="tabs">
+      <button data-t="danas" class="on">Danas</button>
+      <button data-t="prognoza">Prognoza</button>
+      <button data-t="vazduh">Vazduh i polen</button>
+      <button data-t="radar">Radar</button>
+      <button data-t="dugorocno">Dugoročno</button>
+      <button data-t="podesavanja">Podešavanja</button>
+    </nav>
+  </div>
+</header>
+<main class="wrap" id="app"><div class="skel"></div></main>
+<footer>
+  Prognoza: Open-Meteo (ECMWF, DWD ICON i drugi modeli) · Vazduh i polen: Copernicus CAMS · Upozorenja: EUMETNET Meteoalarm · Radar: RainViewer · Mapa: © OpenStreetMap<br>
+  Lična stranica, nije za komercijalnu upotrebu. <a href="https://github.com/ludwize/kravos-weather" rel="noopener">Android aplikacija i izvorni kod</a>
+</footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+"use strict";
+/* ============================================================ helpers */
+const $ = (s, r = document) => r.querySelector(s);
+const el = (html) => { const t = document.createElement("template"); t.innerHTML = html.trim(); return t.content.firstChild; };
+const store = {
+  get(k, d) { try { const v = localStorage.getItem("kv." + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem("kv." + k, JSON.stringify(v)); } catch (e) {} },
+};
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const CYR = { А:"A",Б:"B",В:"V",Г:"G",Д:"D",Ђ:"Đ",Е:"E",Ж:"Ž",З:"Z",И:"I",Ј:"J",К:"K",Л:"L",Љ:"Lj",М:"M",Н:"N",Њ:"Nj",О:"O",П:"P",Р:"R",С:"S",Т:"T",Ћ:"Ć",У:"U",Ф:"F",Х:"H",Ц:"C",Ч:"Č",Џ:"Dž",Ш:"Š",а:"a",б:"b",в:"v",г:"g",д:"d",ђ:"đ",е:"e",ж:"ž",з:"z",и:"i",ј:"j",к:"k",л:"l",љ:"lj",м:"m",н:"n",њ:"nj",о:"o",п:"p",р:"r",с:"s",т:"t",ћ:"ć",у:"u",ф:"f",х:"h",ц:"c",ч:"č",џ:"dž",ш:"š" };
+const latin = (s) => (s || "").replace(/[Ѐ-ӿ]/g, (c) => CYR[c] ?? c);
+const pad = (n) => String(n).padStart(2, "0");
+// Open-Meteo returns local wall-clock ISO strings ("2026-10-26T14:00"); treat them as UTC just for arithmetic and formatting.
+const P = (s) => { const m = /(\d+)-(\d+)-(\d+)(?:T(\d+):(\d+))?/.exec(s); return new Date(Date.UTC(+m[1], +m[2] - 1, +m[3], +(m[4] || 0), +(m[5] || 0))); };
+const hhmm = (s) => s ? s.slice(11, 16) : "--:--";
+const DS = ["Ned", "Pon", "Uto", "Sre", "Čet", "Pet", "Sub"];
+const DL = ["Nedelja", "Ponedeljak", "Utorak", "Sreda", "Četvrtak", "Petak", "Subota"];
+const MS = ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "avg", "sep", "okt", "nov", "dec"];
+const MLONG = ["januar", "februar", "mart", "april", "maj", "jun", "jul", "avgust", "septembar", "oktobar", "novembar", "decembar"];
+const dshort = (s) => { const d = P(s); return `${d.getUTCDate()}. ${MS[d.getUTCMonth()]}`; };
+const num = (v, d = 0) => v == null || isNaN(v) ? "–" : Number(v).toFixed(d).replace(".", ",");
+
+/* ============================================================ settings */
+const S = { temp: store.get("temp", "C"), wind: store.get("wind", "kmh"), theme: store.get("theme", "auto") };
+function applyTheme() {
+  if (S.theme === "auto") document.documentElement.removeAttribute("data-theme"); else document.documentElement.setAttribute("data-theme", S.theme);
+  document.documentElement.classList.toggle("dark-map", isDark());
+  if (window.__map) setMapTheme();
+}
+const isDark = () => S.theme === "dark" || (S.theme === "auto" && matchMedia("(prefers-color-scheme: dark)").matches);
+const T = (c, u = false) => { if (c == null) return "–°"; const v = S.temp === "F" ? c * 9 / 5 + 32 : c; const r = Math.round(v) || 0; return `${r}°${u ? S.temp : ""}`; };
+const beaufort = (k) => { const L = [1, 6, 12, 20, 29, 39, 50, 62, 75, 89, 103, 118]; const i = L.findIndex((x) => k < x); return i < 0 ? 12 : i; };
+const W = (k) => k == null ? "–" : S.wind === "ms" ? `${num(k / 3.6, 1)} m/s` : S.wind === "bft" ? `${beaufort(k)} Bf` : `${Math.round(k)} km/h`;
+const DIRS = ["S","SSI","SI","ISI","I","IJI","JI","JJI","J","JJZ","JZ","ZJZ","Z","ZSZ","SZ","SSZ"];
+const dir = (d) => DIRS[Math.floor((((d % 360) + 360) % 360) / 22.5 + 0.5) % 16];
+const mm = (v) => v == null ? "–" : v <= 0 ? "0 mm" : v < 0.1 ? "<0,1 mm" : v < 10 ? `${num(v, 1)} mm` : `${Math.round(v)} mm`;
+
+/* ============================================================ weather codes + icons */
+const WX = { 0:"Vedro",1:"Pretežno vedro",2:"Delimično oblačno",3:"Oblačno",45:"Magla",48:"Magla sa injem",51:"Slaba rosulja",53:"Rosulja",55:"Jaka rosulja",56:"Ledena rosulja",57:"Ledena rosulja",61:"Slaba kiša",63:"Kiša",65:"Jaka kiša",66:"Ledena kiša",67:"Ledena kiša",71:"Slab sneg",73:"Sneg",75:"Jak sneg",77:"Snežna zrnca",80:"Slabi pljuskovi",81:"Pljuskovi",82:"Jaki pljuskovi",85:"Snežni pljuskovi",86:"Jaki snežni pljuskovi",95:"Grmljavina",96:"Grmljavina sa gradom",99:"Grmljavina sa gradom" };
+const wxText = (c) => WX[c] || "—";
+const isWet = (c) => (c >= 51 && c <= 67) || (c >= 80 && c <= 82) || c >= 95;
+const isSnow = (c) => (c >= 71 && c <= 77) || c === 85 || c === 86;
+function grad(c, day) {
+  if (c >= 95) return ["#2B2D42", "#4A3F5C"];
+  if (!day && c <= 1) return ["#0B1730", "#233B6E"];
+  if (!day) return ["#161B26", "#2C3444"];
+  if (c <= 1) return ["#2F80ED", "#56CCF2"];
+  if (c === 2) return ["#4A7BC4", "#8DB3E2"];
+  if (c === 3 || c === 45 || c === 48) return ["#5D6D7E", "#95A5B5"];
+  if (isSnow(c)) return ["#7D8FA8", "#C3D0E0"];
+  return ["#3D5168", "#6E8299"];
+}
+const CLOUD = '<path d="M17 50a10 10 0 0 1 1-20 14 14 0 0 1 27 3 9 9 0 0 1-1 17z" fill="#fff" stroke="#B8C4D4" stroke-width="1.5"/>';
+const DARKCLOUD = '<path d="M17 50a10 10 0 0 1 1-20 14 14 0 0 1 27 3 9 9 0 0 1-1 17z" fill="#B4BFCD"/>';
+const SUN = (x, y, r) => `<g stroke="#FFC107" stroke-width="3" stroke-linecap="round">${[0,45,90,135,180,225,270,315].map((a) => `<line x1="${x + Math.cos(a*Math.PI/180)*(r+4)}" y1="${y + Math.sin(a*Math.PI/180)*(r+4)}" x2="${x + Math.cos(a*Math.PI/180)*(r+9)}" y2="${y + Math.sin(a*Math.PI/180)*(r+9)}"/>`).join("")}</g><circle cx="${x}" cy="${y}" r="${r}" fill="#FFD54F"/>`;
+const MOON = '<path d="M40 14a18 18 0 1 0 12 30A15 15 0 0 1 40 14z" fill="#F3E9A8"/>';
+const drops = (n, col = "#4FA3FF") => [20, 31, 42].slice(0, n).map((x, i) => `<line x1="${x + 2}" y1="${52 + (i % 2) * 2}" x2="${x - 2}" y2="${60 + (i % 2) * 2}" stroke="${col}" stroke-width="3" stroke-linecap="round"/>`).join("");
+function icon(code, day = true) {
+  let g;
+  if (code === 0) g = day ? SUN(32, 32, 12) : MOON;
+  else if (code === 1 || code === 2) g = (day ? SUN(22, 22, 9) : '<g transform="translate(-14 -10) scale(.7)">' + MOON + "</g>") + '<g transform="translate(6 4)">' + CLOUD + "</g>";
+  else if (code === 3) g = DARKCLOUD.replace("M17", "M13") + '<g transform="translate(6 -2)">' + CLOUD + "</g>";
+  else if (code === 45 || code === 48) g = CLOUD.replace(/<path/, '<path transform="translate(0 -6)"') + [44, 50, 56].map((y) => `<line x1="14" y1="${y}" x2="50" y2="${y}" stroke="#9FB0C5" stroke-width="3" stroke-linecap="round"/>`).join("");
+  else if (isSnow(code)) g = '<g transform="translate(0 -6)">' + CLOUD + "</g>" + [20, 32, 44].map((x) => `<circle cx="${x}" cy="${54 + (x % 2) * 3}" r="2.6" fill="#DCEBFF" stroke="#9CC4F5"/>`).join("");
+  else if (code >= 95) g = '<g transform="translate(0 -8)">' + DARKCLOUD + "</g>" + '<path d="M34 40l-8 12h7l-3 10 11-15h-7z" fill="#FFC107"/>';
+  else if (code === 56 || code === 57 || code === 66 || code === 67) g = '<g transform="translate(0 -6)">' + CLOUD + "</g>" + drops(2) + '<circle cx="42" cy="56" r="2.5" fill="#DCEBFF" stroke="#9CC4F5"/>';
+  else g = (code === 61 || code === 80 || code === 51) && day ? SUN(44, 16, 7) + '<g transform="translate(0 -4)">' + CLOUD + "</g>" + drops(2) : '<g transform="translate(0 -6)">' + (code >= 65 ? DARKCLOUD + "</g><g transform='translate(0 -6)'>" : "") + CLOUD + "</g>" + drops(code >= 65 || code === 82 ? 3 : 2);
+  return `<svg class="wxi" viewBox="0 0 64 64" aria-hidden="true">${g}</svg>`;
+}
+
+/* ============================================================ state + data */
+const defPlace = { name: "Beograd", region: "Srbija", lat: 44.8176, lon: 20.4569 };
+const state = { place: store.get("place", defPlace), saved: store.get("saved", []), tab: (location.hash || "#danas").slice(1) || "danas", fc: null, aq: null, wa: null, sd: null, sw: null, sm: null };
+
+async function getJSON(url, ttl = 600) {
+  const key = "c:" + url;
+  try { const c = JSON.parse(sessionStorage.getItem(key) || "null"); if (c && Date.now() - c.t < ttl * 1000) return c.d; } catch (e) {}
+  const r = await fetch(url); if (!r.ok) throw new Error(r.status + " " + url.split("?")[0]);
+  const d = await r.json();
+  try { sessionStorage.setItem(key, JSON.stringify({ t: Date.now(), d })); } catch (e) {}
+  return d;
+}
+const ll = (p) => `latitude=${p.lat.toFixed(4)}&longitude=${p.lon.toFixed(4)}`;
+const urls = {
+  fc: (p) => `https://api.open-meteo.com/v1/forecast?${ll(p)}&timezone=auto&past_days=1&forecast_days=16&wind_speed_unit=kmh` +
+    "&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,weather_code,cloud_cover,pressure_msl,wind_speed_10m,wind_direction_10m,wind_gusts_10m,dew_point_2m,visibility,uv_index" +
+    "&minutely_15=precipitation&forecast_minutely_15=24" +
+    "&hourly=temperature_2m,apparent_temperature,precipitation_probability,precipitation,weather_code,wind_speed_10m,wind_direction_10m,wind_gusts_10m,relative_humidity_2m,uv_index,is_day,cloud_cover,pressure_msl" +
+    "&daily=weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,daylight_duration,uv_index_max,precipitation_sum,precipitation_probability_max,precipitation_hours,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant,snowfall_sum",
+  aq: (p) => `https://air-quality-api.open-meteo.com/v1/air-quality?${ll(p)}&timezone=auto&forecast_days=5` +
+    "&current=european_aqi,us_aqi,pm10,pm2_5,nitrogen_dioxide,ozone,sulphur_dioxide,carbon_monoxide,dust,uv_index,alder_pollen,birch_pollen,olive_pollen,grass_pollen,mugwort_pollen,ragweed_pollen" +
+    "&hourly=european_aqi,pm2_5,pm10,alder_pollen,birch_pollen,olive_pollen,grass_pollen,mugwort_pollen,ragweed_pollen",
+  sd: (p) => `https://seasonal-api.open-meteo.com/v1/seasonal?${ll(p)}&timezone=auto&forecast_days=46&daily=temperature_2m_max,temperature_2m_min,precipitation_sum`,
+  sw: (p) => `https://seasonal-api.open-meteo.com/v1/seasonal?${ll(p)}&timezone=auto&weekly=temperature_2m_mean,temperature_2m_anomaly,precipitation_mean,precipitation_anomaly`,
+  sm: (p) => `https://seasonal-api.open-meteo.com/v1/seasonal?${ll(p)}&timezone=auto&monthly=temperature_2m_mean,temperature_2m_anomaly,precipitation_mean,precipitation_anomaly`,
+};
+async function load(kind) {
+  const p = state.place, id = p.lat + "," + p.lon;
+  if (state[kind] && state[kind].id === id) return state[kind].d;
+  const ttl = { fc: 600, aq: 1800, sd: 21600, sw: 21600, sm: 43200 }[kind];
+  const d = await getJSON(urls[kind](p), ttl);
+  if (id === state.place.lat + "," + state.place.lon) state[kind] = { id, d };
+  return d;
+}
+const POLLEN = [
+  ["alder_pollen", "Jova", "Drveće", [10, 50, 250]], ["birch_pollen", "Breza", "Drveće", [10, 50, 250]], ["olive_pollen", "Maslina", "Drveće", [10, 50, 250]],
+  ["grass_pollen", "Trave", "Trave", [5, 20, 100]], ["mugwort_pollen", "Pelin", "Korovi", [5, 20, 100]], ["ragweed_pollen", "Ambrozija", "Korovi", [5, 20, 100]],
+];
+const polLevel = (b, v) => v == null || v < 1 ? 0 : v < b[0] ? 1 : v < b[1] ? 2 : v < b[2] ? 3 : 4;
+const POLL_BANDS = [["Nema", "#9AA5B1"], ["Nizak", "#50C878"], ["Umeren", "#F2C94C"], ["Visok", "#F2994A"], ["Vrlo visok", "#EB5757"]];
+const eaqi = (v) => v == null ? ["Nema podataka", "#888"] : v < 20 ? ["Dobar", "#50C878"] : v < 40 ? ["Prihvatljiv", "#A3D65C"] : v < 60 ? ["Umeren", "#F2C94C"] : v < 80 ? ["Loš", "#F2994A"] : v < 100 ? ["Vrlo loš", "#EB5757"] : ["Izuzetno loš", "#9B51E0"];
+const eaqiAdvice = (v) => v == null ? "" : v < 40 ? "Vazduh je čist. Idealno za aktivnosti napolju." : v < 60 ? "Osetljive osobe neka smanje duže napore napolju." : v < 80 ? "Smanji napore napolju, naročito ako imaš astmu ili srčane tegobe." : "Izbegavaj boravak i vežbanje napolju, zatvori prozore.";
+const uvBand = (v) => { const r = Math.round(v); return r < 3 ? ["Nizak", "#50C878"] : r < 6 ? ["Umeren", "#F2C94C"] : r < 8 ? ["Visok", "#F2994A"] : r < 11 ? ["Vrlo visok", "#EB5757"] : ["Ekstreman", "#9B51E0"]; };
+
+/* ============================================================ derived text */
+function nowIndex(fc) { const k = fc.current.time.slice(0, 13); const i = fc.hourly.time.findIndex((t) => t.slice(0, 13) >= k); return i < 0 ? 0 : i; }
+function nowcast(fc) {
+  const m = fc.minutely_15; if (!m || !m.precipitation) return null;
+  const c = fc.current.time, idx = m.time.findIndex((t) => t >= c.slice(0, 15) + "0" || t >= c);
+  const arr = m.precipitation.slice(Math.max(idx, 0), Math.max(idx, 0) + 12).map((v) => v || 0);
+  if (!arr.length) return null;
+  const wet = arr.map((v) => v >= 0.1);
+  if (wet[0]) { const end = wet.indexOf(false); return end < 0 ? "Padavine će trajati još bar 3 sata." : `Padavine prestaju za oko ${end * 15} min.`; }
+  const st = wet.indexOf(true);
+  return st < 0 ? "Bez padavina u naredna 3 sata." : `Padavine počinju za oko ${st * 15} min.`;
+}
+function vsYesterday(fc) {
+  const d = fc.daily; if (d.time.length < 3) return "";
+  const t = d.temperature_2m_max[1], y = d.temperature_2m_max[0]; if (t == null || y == null) return "";
+  const diff = Math.round(t - y); if (Math.abs(diff) < 2) return "Danas slično kao juče.";
+  return diff > 0 ? `Danas je ${Math.abs(diff)}° toplije nego juče.` : `Danas je ${Math.abs(diff)}° hladnije nego juče.`;
+}
+function moon(dateStr) {
+  const d = P(dateStr), days = d.getTime() / 86400000 + 0.5 - (Date.UTC(2000, 0, 6) / 86400000 + 0.75), p = days / 29.530588853, ph = p - Math.floor(p);
+  const name = ph < .03 || ph > .97 ? "Mlad mesec" : ph < .22 ? "Rastući srp" : ph < .28 ? "Prva četvrt" : ph < .47 ? "Rastući mesec" : ph < .53 ? "Pun mesec" : ph < .72 ? "Opadajući mesec" : ph < .78 ? "Poslednja četvrt" : "Opadajući srp";
+  return [name, Math.round((1 - Math.cos(2 * Math.PI * ph)) / 2 * 100)];
+}
+
+/* ============================================================ charts */
+function hourlyChart(fc, from, n) {
+  const h = fc.hourly, W_ = 960, H = 210, L = 30, R = 10, top = 14, bot = 30;
+  const ts = h.temperature_2m.slice(from, from + n), pr = h.precipitation.slice(from, from + n), pp = h.precipitation_probability.slice(from, from + n), tm = h.time.slice(from, from + n);
+  const vals = ts.map((v) => S.temp === "F" ? v * 9 / 5 + 32 : v);
+  const lo = Math.floor(Math.min(...vals) - 1), hi = Math.ceil(Math.max(...vals) + 1), pw = (W_ - L - R) / (n - 1);
+  const X = (i) => L + i * pw, Y = (v) => top + (1 - (v - lo) / (hi - lo)) * (H - top - bot);
+  const pmax = Math.max(2, ...pr), bh = (v) => (v / pmax) * 60;
+  let s = `<svg class="chart" viewBox="0 0 ${W_} ${H}" role="img" aria-label="Temperatura i padavine po satu">`;
+  for (let g = 0; g <= 3; g++) { const v = lo + (hi - lo) * g / 3, y = Y(v); s += `<line x1="${L}" x2="${W_ - R}" y1="${y}" y2="${y}" stroke="var(--rule)"/><text x="${L - 4}" y="${y + 4}" text-anchor="end">${Math.round(v)}°</text>`; }
+  pr.forEach((v, i) => { if (v > 0.05) s += `<rect x="${X(i) - pw * .35}" width="${pw * .7}" y="${H - bot - bh(v)}" height="${bh(v)}" rx="2" fill="#4FA3FF" opacity=".55"/>`; });
+  s += `<polyline fill="none" stroke="#FF8A4C" stroke-width="2.6" stroke-linejoin="round" points="${vals.map((v, i) => `${X(i)},${Y(v)}`).join(" ")}"/>`;
+  tm.forEach((t, i) => { if (i % Math.max(1, Math.round(n / 8)) === 0) s += `<text x="${X(i)}" y="${H - 10}" text-anchor="middle">${t.slice(8, 10) !== tm[0].slice(8, 10) && t.slice(11, 13) === "00" ? DS[P(t).getUTCDay()] : t.slice(11, 13) + "h"}</text>`; });
+  return s + "</svg>";
+}
+function genericBars(items, opt) { // [{label, v, color, sub}]
+  const W_ = 960, H = 170, L = 30, bot = 28, n = items.length, bw = (W_ - L - 10) / n, max = opt.max || Math.max(1, ...items.map((i) => i.v || 0));
+  let s = `<svg class="chart" viewBox="0 0 ${W_} ${H}" role="img" aria-label="${esc(opt.label)}">`;
+  for (let g = 0; g <= 2; g++) { const v = max * g / 2, y = H - bot - (v / max) * (H - bot - 14); s += `<line x1="${L}" x2="${W_ - 10}" y1="${y}" y2="${y}" stroke="var(--rule)"/><text x="${L - 4}" y="${y + 4}" text-anchor="end">${Math.round(v)}</text>`; }
+  items.forEach((it, i) => { const h = ((it.v || 0) / max) * (H - bot - 14); s += `<rect x="${L + i * bw + bw * .15}" width="${bw * .7}" y="${H - bot - h}" height="${h}" rx="3" fill="${it.color}"/>`; if (n <= 16 || i % 2 === 0) s += `<text x="${L + i * bw + bw / 2}" y="${H - 10}" text-anchor="middle">${it.label}</text>`; });
+  return s + "</svg>";
+}
+
+/* ============================================================ views */
+const V = {};
+V.danas = async () => {
+  const [fc, aq, wa] = [await load("fc"), load("aq").catch(() => null), loadWarnings().catch(() => [])];
+  const c = fc.current, day = !!c.is_day, [g1, g2] = grad(c.weather_code, day), d = fc.daily, ti = d.time.indexOf(c.time.slice(0, 10)), i0 = ti < 0 ? 1 : ti;
+  const hi = nowIndex(fc), nc = nowcast(fc), vy = vsYesterday(fc);
+  const aqd = await aq, warns = await wa;
+  const [moonName, moonIll] = moon(c.time);
+  const uv = uvBand(c.uv_index || 0), pTrend = (() => { const a = fc.hourly.pressure_msl[hi - 3], b = fc.hourly.pressure_msl[hi]; if (a == null || b == null) return ""; const dd = b - a; return Math.abs(dd) < 1 ? "stabilan" : dd > 0 ? "raste" : "pada"; })();
+  let h = `<div class="grid">`;
+  if (warns.length) h += `<div class="c12">${warns.map((w) => `<div class="alert" style="border-color:${w.color}"><b>${esc(w.title)}</b><span class="note">${esc(w.text)}</span></div>`).join("")}</div>`;
+  h += `<div class="c12"><div class="hero" style="background:linear-gradient(160deg,${g1},${g2})">
+    ${icon(c.weather_code, day)}
+    <div class="big">${T(c.temperature_2m)}</div>
+    <div class="meta"><div class="name">${esc(state.place.name)}</div><div class="desc">${wxText(c.weather_code)} · osećaj ${T(c.apparent_temperature)}</div>
+    <div class="sub">Danas ${T(d.temperature_2m_max[i0])} / ${T(d.temperature_2m_min[i0])} ${vy ? "· " + vy : ""}</div>
+    ${nc ? `<div class="now-text">${nc}</div>` : ""}
+    <div class="stats"><div>Vetar<b>${W(c.wind_speed_10m)} ${dir(c.wind_direction_10m)}</b></div><div>Udari<b>${W(c.wind_gusts_10m)}</b></div><div>Vlažnost<b>${Math.round(c.relative_humidity_2m)}%</b></div><div>Pritisak<b>${Math.round(c.pressure_msl)} hPa</b></div></div></div>
+  </div></div>`;
+  h += `<div class="card c12"><h3>Narednih 24 sata</h3><div class="hours">${fc.hourly.time.slice(hi, hi + 24).map((t, k) => { const j = hi + k, hp = fc.hourly.precipitation_probability[j]; return `<div class="hr"><div class="h">${k === 0 ? "Sad" : t.slice(11, 13) + "h"}</div>${icon(fc.hourly.weather_code[j], !!fc.hourly.is_day[j])}<div class="t">${T(fc.hourly.temperature_2m[j])}</div><div class="p">${hp >= 10 ? hp + "%" : ""}</div></div>`; }).join("")}</div></div>`;
+  h += `<div class="card c12"><div class="row"><h3 style="margin:0">Temperatura i padavine — 48 h</h3></div>${hourlyChart(fc, hi, 48)}<div class="note">Narandžasta linija je temperatura, plavi stubići su padavine.</div></div>`;
+  h += `<div class="card c12"><h3>Detalji</h3><div class="tiles">
+    <div class="tile"><div class="k">UV indeks</div><div class="v">${num(c.uv_index, 1)}</div><div class="s" style="color:${uv[1]}">${uv[0]}</div></div>
+    <div class="tile"><div class="k">Oblačnost</div><div class="v">${Math.round(c.cloud_cover)}%</div><div class="s">Rosa ${T(c.dew_point_2m)}</div></div>
+    <div class="tile"><div class="k">Vidljivost</div><div class="v">${c.visibility != null ? num(c.visibility / 1000, c.visibility >= 10000 ? 0 : 1) + " km" : "–"}</div><div class="s">Pritisak ${pTrend}</div></div>
+    <div class="tile"><div class="k">Izlazak / zalazak</div><div class="v" style="font-size:18px">${hhmm(d.sunrise[i0])} · ${hhmm(d.sunset[i0])}</div><div class="s">Dan traje ${Math.floor(d.daylight_duration[i0] / 3600)} h ${Math.round(d.daylight_duration[i0] % 3600 / 60)} min</div></div>
+    <div class="tile"><div class="k">Mesec</div><div class="v" style="font-size:18px">${moonName}</div><div class="s">${moonIll}% osvetljen</div></div>
+    ${aqd ? (() => { const a = aqd.current.european_aqi, b = eaqi(a); return `<div class="tile"><div class="k">Kvalitet vazduha</div><div class="v">${a != null ? Math.round(a) : "–"}</div><div class="s" style="color:${b[1]}">${b[0]}</div></div>`; })() : ""}
+  </div></div>`;
+  h += `<div class="card c12"><h3>Narednih 7 dana</h3>${dayRows(fc, i0, 7)}</div>`;
+  return h + "</div>";
+};
+
+function dayRows(fc, from, n) {
+  const d = fc.daily, mn = Math.min(...d.temperature_2m_min.slice(from, from + n)), mx = Math.max(...d.temperature_2m_max.slice(from, from + n)), span = Math.max(1, mx - mn);
+  let h = `<div class="days">`;
+  for (let i = from; i < Math.min(d.time.length, from + n); i++) {
+    const dt = P(d.time[i]), lab = i === from ? "Danas" : i === from + 1 ? "Sutra" : DS[dt.getUTCDay()], a = d.temperature_2m_min[i], b = d.temperature_2m_max[i], pp = d.precipitation_probability_max[i];
+    h += `<div class="day"><div class="dn">${lab}<span class="dd">${dshort(d.time[i])}</span></div>${icon(d.weather_code[i], true)}<div class="pp">${pp >= 10 ? pp + "%" : ""}</div><div class="rng"><i style="left:${(a - mn) / span * 100}%;right:${100 - (b - mn) / span * 100}%"></i></div><div class="tt">${T(b)} <span>${T(a)}</span></div></div>`;
+  }
+  return h + "</div>";
+}
+
+V.prognoza = async () => {
+  const fc = await load("fc"), d = fc.daily, hi = nowIndex(fc), i0 = Math.max(0, d.time.indexOf(fc.current.time.slice(0, 10)));
+  let h = `<div class="grid"><div class="card c12"><div class="row"><h3 style="margin:0">Po satu — narednih 7 dana</h3><div class="seg" id="metric"><button data-m="temp" class="on">Temperatura</button><button data-m="wind">Vetar</button><button data-m="hum">Vlažnost</button><button data-m="pres">Pritisak</button><button data-m="uv">UV</button></div></div><div style="overflow-x:auto"><div id="hchart" style="min-width:760px"></div></div></div>`;
+  h += `<div class="card c12"><h3>16 dana</h3>${dayRows(fc, i0, 16)}</div>`;
+  h += `<div class="card c12"><h3>Detalji po danima</h3><div class="tiles" style="grid-template-columns:repeat(auto-fill,minmax(210px,1fr))">${d.time.slice(i0, i0 + 16).map((t, k) => { const i = i0 + k; return `<div class="tile"><div class="k">${DL[P(t).getUTCDay()]} · ${dshort(t)}</div><div style="display:flex;align-items:center;gap:6px">${icon(d.weather_code[i], true).replace('class="wxi"', 'class="wxi" style="width:34px;height:34px"')}<div><b>${wxText(d.weather_code[i])}</b></div></div><div class="s">Padavine ${mm(d.precipitation_sum[i])}${d.precipitation_hours[i] ? ` · ${d.precipitation_hours[i]} h` : ""}${d.snowfall_sum[i] > 0 ? ` · sneg ${num(d.snowfall_sum[i], 1)} cm` : ""}<br>Vetar ${W(d.wind_speed_10m_max[i])} ${dir(d.wind_direction_10m_dominant[i])}, udari ${W(d.wind_gusts_10m_max[i])}<br>UV ${num(d.uv_index_max[i], 0)} · osećaj ${T(d.apparent_temperature_max[i])} / ${T(d.apparent_temperature_min[i])}</div></div>`; }).join("")}</div></div></div>`;
+  setTimeout(() => {
+    const draw = (m) => {
+      const hh = fc.hourly, n = 168, from = hi, labelFor = { temp: hourlyChart(fc, from, n) };
+      if (m === "temp") { $("#hchart").innerHTML = labelFor.temp; return; }
+      const cfg = { wind: ["wind_speed_10m", "#2E9E9E", (v) => v], hum: ["relative_humidity_2m", "#4FA3FF", (v) => v], pres: ["pressure_msl", "#9B7BFF", (v) => v], uv: ["uv_index", "#F2994A", (v) => v] }[m];
+      const ys = hh[cfg[0]].slice(from, from + n), ts = hh.time.slice(from, from + n), Wd = 960, H = 210, L = 38, top = 14, bot = 30;
+      const lo = m === "pres" ? Math.floor(Math.min(...ys) - 2) : 0, hi_ = Math.ceil(Math.max(...ys) + (m === "pres" ? 2 : 1)), pw = (Wd - L - 10) / (n - 1);
+      const X = (i) => L + i * pw, Y = (v) => top + (1 - (v - lo) / (hi_ - lo)) * (H - top - bot);
+      let s = `<svg class="chart" viewBox="0 0 ${Wd} ${H}">`;
+      for (let g = 0; g <= 3; g++) { const v = lo + (hi_ - lo) * g / 3; s += `<line x1="${L}" x2="${Wd - 10}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--rule)"/><text x="${L - 4}" y="${Y(v) + 4}" text-anchor="end">${m === "wind" && S.wind === "ms" ? num(v / 3.6, 0) : Math.round(v)}</text>`; }
+      s += `<polyline fill="none" stroke="${cfg[1]}" stroke-width="2.4" points="${ys.map((v, i) => `${X(i)},${Y(v)}`).join(" ")}"/>`;
+      ts.forEach((t, i) => { if (t.slice(11, 13) === "00") s += `<line x1="${X(i)}" x2="${X(i)}" y1="${top}" y2="${H - bot}" stroke="var(--rule)"/><text x="${X(i)}" y="${H - 10}" text-anchor="middle">${DS[P(t).getUTCDay()]}</text>`; });
+      $("#hchart").innerHTML = s + "</svg>" + `<div class="note">${{ wind: "Vetar na 10 m, " + (S.wind === "ms" ? "m/s" : "km/h"), hum: "Relativna vlažnost, %", pres: "Pritisak na nivou mora, hPa", uv: "UV indeks" }[m]}</div>`;
+    };
+    draw("temp");
+    $("#metric").onclick = (e) => { const b = e.target.closest("button"); if (!b) return; document.querySelectorAll("#metric button").forEach((x) => x.classList.toggle("on", x === b)); draw(b.dataset.m); };
+  }, 0);
+  return h;
+};
+
+V.vazduh = async () => {
+  const aq = await load("aq"), c = aq.current, a = c.european_aqi, [lab, col] = eaqi(a), hh = aq.hourly;
+  const days = [...new Set(hh.time.map((t) => t.slice(0, 10)))];
+  const maxBy = (key, day) => { const v = hh[key].filter((x, i) => hh.time[i].startsWith(day) && x != null); return v.length ? Math.max(...v) : null; };
+  let h = `<div class="grid"><div class="card c6"><h3>Evropski indeks kvaliteta vazduha</h3><div class="aqi"><div class="n" style="color:${col}">${a != null ? Math.round(a) : "–"}</div><div><div class="l" style="color:${col}">${lab}</div><div class="note">${eaqiAdvice(a)}</div></div></div><div class="meter"><i style="left:${Math.min(100, (a || 0))}%"></i></div></div>`;
+  h += `<div class="card c6"><h3>Zagađivači</h3><div class="tiles" style="grid-template-columns:repeat(3,1fr)">${[["PM2.5", c.pm2_5], ["PM10", c.pm10], ["NO₂", c.nitrogen_dioxide], ["O₃", c.ozone], ["SO₂", c.sulphur_dioxide], ["CO", c.carbon_monoxide]].map(([k, v]) => `<div class="tile"><div class="k">${k}</div><div class="v" style="font-size:19px">${num(v, v < 10 ? 1 : 0)}</div><div class="s">µg/m³</div></div>`).join("")}</div></div>`;
+  h += `<div class="card c12"><h3>Indeks po danima (najviša vrednost)</h3>${genericBars(days.map((d) => { const m = maxBy("european_aqi", d); return { label: DS[P(d).getUTCDay()], v: m, color: eaqi(m)[1] }; }), { label: "EAQI po danima", max: 100 })}</div>`;
+  const any = POLLEN.some(([k]) => hh[k] && hh[k].some((v) => v != null && v >= 1));
+  h += `<div class="card c12"><h3>Polen</h3>`;
+  if (!hh.alder_pollen || hh.alder_pollen.every((v) => v == null)) h += `<div class="err">Za ovu lokaciju nema podataka o polenu (pokriva samo Evropu, u sezoni).</div>`;
+  else {
+    h += `<table class="pol"><tr><th>Vrsta</th><th>Sada</th>${days.slice(0, 4).map((d) => `<th>${DS[P(d).getUTCDay()]}</th>`).join("")}</tr>`;
+    for (const [k, name, kind, b] of POLLEN) {
+      const now = c[k], lv = polLevel(b, now);
+      h += `<tr><td><b>${name}</b><br><span class="note">${kind}</span></td><td><span class="pill" style="background:${POLL_BANDS[lv][1]}">${POLL_BANDS[lv][0]}</span><div class="note">${now != null ? num(now, 0) + " zrna/m³" : ""}</div></td>${days.slice(0, 4).map((d) => { const m = maxBy(k, d), l = polLevel(b, m); return `<td><span class="pill" style="background:${POLL_BANDS[l][1]}">${POLL_BANDS[l][0]}</span></td>`; }).join("")}</tr>`;
+    }
+    h += `</table>${any ? "" : '<div class="note" style="margin-top:8px">Trenutno je sezona polena završena ili je koncentracija zanemarljiva.</div>'}`;
+  }
+  return h + "</div></div>";
+};
+
+V.dugorocno = async () => {
+  const [sd, sw, sm] = await Promise.all([load("sd").catch(() => null), load("sw").catch(() => null), load("sm").catch(() => null)]);
+  const members = (o, base) => Object.keys(o).filter((k) => (k === base || (k.startsWith(base + "_") && !k.slice(base.length + 1).startsWith("anomaly"))) && Array.isArray(o[k])).map((k) => o[k]);
+  const mean = (ms, i) => { const v = ms.map((m) => m[i]).filter((x) => x != null); return v.length ? v.reduce((a, b) => a + b, 0) / v.length : null; };
+  const spread = (ms, i) => { const v = ms.map((m) => m[i]).filter((x) => x != null).sort((a, b) => a - b); return v.length ? [v.reduce((a, b) => a + b, 0) / v.length, v[Math.floor((v.length - 1) * .1)], v[Math.floor((v.length - 1) * .9)]] : null; };
+  const tt = (o) => (o.time || []).map((t) => typeof t === "number" ? new Date(t * 1000).toISOString().slice(0, 10) : t);
+  let h = `<div class="grid">`;
+  if (sd && sd.daily) {
+    const d = sd.daily, t = tt(d), mx = members(d, "temperature_2m_max"), mn = members(d, "temperature_2m_min"), pr = members(d, "precipitation_sum");
+    const rows = t.map((x, i) => ({ t: x, hi: spread(mx, i), lo: spread(mn, i), p: spread(pr, i) })).filter((r) => r.hi || r.lo);
+    if (rows.length) {
+      const Wd = 960, H = 230, L = 30, top = 12, bot = 28, n = rows.length, pw = (Wd - L - 10) / Math.max(1, n - 1);
+      const f = (v) => S.temp === "F" ? v * 9 / 5 + 32 : v;
+      const all = rows.flatMap((r) => [r.hi && f(r.hi[2]), r.lo && f(r.lo[1])]).filter((x) => x != null), lo = Math.floor(Math.min(...all) - 1), hi = Math.ceil(Math.max(...all) + 1);
+      const X = (i) => L + i * pw, Y = (v) => top + (1 - (f(v) - lo) / (hi - lo)) * (H - top - bot) - (S.temp === "F" ? 0 : 0);
+      const Yf = (v) => top + (1 - (v - lo) / (hi - lo)) * (H - top - bot);
+      const band = (k, col) => { const up = rows.map((r, i) => r[k] ? `${X(i)},${Yf(f(r[k][2]))}` : null).filter(Boolean), dn = rows.map((r, i) => r[k] ? `${X(i)},${Yf(f(r[k][1]))}` : null).filter(Boolean).reverse(); return `<polygon points="${up.concat(dn).join(" ")}" fill="${col}" opacity=".22"/><polyline fill="none" stroke="${col}" stroke-width="2.2" points="${rows.map((r, i) => r[k] ? `${X(i)},${Yf(f(r[k][0]))}` : null).filter(Boolean).join(" ")}"/>`; };
+      let s = `<svg class="chart" viewBox="0 0 ${Wd} ${H}">`;
+      for (let g = 0; g <= 3; g++) { const v = lo + (hi - lo) * g / 3; s += `<line x1="${L}" x2="${Wd - 10}" y1="${Yf(v)}" y2="${Yf(v)}" stroke="var(--rule)"/><text x="${L - 4}" y="${Yf(v) + 4}" text-anchor="end">${Math.round(v)}°</text>`; }
+      rows.forEach((r, i) => { if (P(r.t).getUTCDay() === 1) s += `<text x="${X(i)}" y="${H - 8}" text-anchor="middle">${dshort(r.t)}</text>`; });
+      s += band("hi", "#FF8A4C") + band("lo", "#4F9BFF") + "</svg>";
+      const bars = genericBars(rows.map((r) => ({ label: dshort(r.t).split(" ")[0], v: r.p ? r.p[0] : 0, color: "#4FA3FF" })), { label: "Padavine po danima" });
+      h += `<div class="card c12"><h3>Narednih ${n} dana (ECMWF ansambl)</h3>${s}<div class="note">Linija je prosek ansambla, osenčeno je raspon 10–90%. Što dalje, to veća nesigurnost.</div></div><div class="card c12"><h3>Padavine (mm/dan, prosek ansambla)</h3>${bars}</div>`;
+    }
+  }
+  const period = (o, title, fmt) => {
+    if (!o) return "";
+    const t = tt(o), tm = members(o, "temperature_2m_mean"), ta = members(o, "temperature_2m_anomaly"), pm = members(o, "precipitation_mean"), pa = members(o, "precipitation_anomaly");
+    const rows = t.map((x, i) => ({ t: x, tm: mean(tm, i), ta: mean(ta, i), pm: mean(pm, i), pa: mean(pa, i) })).filter((r) => r.tm != null || r.ta != null);
+    if (!rows.length) return "";
+    const aCol = (v) => v == null ? "var(--dim)" : v > 0.3 ? "#E4572E" : v < -0.3 ? "#3D8BFD" : "var(--dim)";
+    return `<div class="card c12"><h3>${title}</h3><div class="tiles" style="grid-template-columns:repeat(auto-fill,minmax(170px,1fr))">${rows.map((r) => `<div class="tile"><div class="k">${fmt(r.t)}</div><div class="v">${r.tm != null ? T(r.tm) : "–"}</div><div class="s" style="color:${aCol(r.ta)}">${r.ta != null ? (r.ta > 0 ? "+" : "") + num(S.temp === "F" ? r.ta * 9 / 5 : r.ta, 1) + "° od normale" : ""}</div><div class="s">${r.pm != null ? "Padavine ~" + num(r.pm, 1) + " mm/dan" : ""}${r.pa != null ? ` (${r.pa > 0 ? "+" : ""}${num(r.pa, 1)})` : ""}</div></div>`).join("")}</div></div>`;
+  };
+  h += period(sw && sw.weekly, "Nedelja po nedelja — odstupanje od proseka", (x) => `Od ${dshort(x)}`);
+  h += period(sm && sm.monthly, "Sezonska prognoza po mesecima (SEAS5)", (x) => { const d = P(x); return `${MLONG[d.getUTCMonth()][0].toUpperCase() + MLONG[d.getUTCMonth()].slice(1)} ${d.getUTCFullYear()}.`; });
+  if (!sd && !sw && !sm) h += `<div class="card c12 err">Dugoročna prognoza trenutno nije dostupna.</div>`;
+  return h + `</div>`;
+};
+
+V.podesavanja = async () => {
+  const seg = (id, opts, cur) => `<div class="seg" id="${id}">${opts.map(([v, l]) => `<button data-v="${v}" class="${v === cur ? "on" : ""}">${l}</button>`).join("")}</div>`;
+  setTimeout(() => {
+    for (const [id, key] of [["s-temp", "temp"], ["s-wind", "wind"], ["s-theme", "theme"]]) {
+      $("#" + id).onclick = (e) => { const b = e.target.closest("button"); if (!b) return; S[key] = b.dataset.v; store.set(key, S[key]); applyTheme(); render(); };
+    }
+    $("#s-del") && ($("#s-del").onclick = () => { state.saved = []; store.set("saved", []); renderPlaces(); render(); });
+  }, 0);
+  return `<div class="grid"><div class="card c12 set"><h3>Podešavanja</h3>
+    <label>Temperatura ${seg("s-temp", [["C", "°C"], ["F", "°F"]], S.temp)}</label>
+    <label>Vetar ${seg("s-wind", [["kmh", "km/h"], ["ms", "m/s"], ["bft", "Bofor"]], S.wind)}</label>
+    <label>Tema ${seg("s-theme", [["auto", "Sistem"], ["light", "Svetla"], ["dark", "Tamna"]], S.theme)}</label>
+    <label>Sačuvana mesta (${state.saved.length}) ${state.saved.length ? '<button class="seg" id="s-del" style="padding:6px 12px">Obriši sva</button>' : ""}</label>
+    <p class="note">Podešavanja i mesta se čuvaju samo u ovom pregledaču. Za widget, obaveštenja i upozorenja koristi Android aplikaciju.</p></div></div>`;
+};
+
+/* ---- Meteoalarm (best effort, only for countries it serves; failures are silent) */
+async function loadWarnings() { return []; }
+
+/* ---- Radar */
+let radarTimer = null;
+V.radar = async () => {
+  setTimeout(initRadar, 0);
+  return `<div class="grid"><div class="card c12"><div class="row"><h3 style="margin:0">Radar padavina</h3><div class="note" id="rnote">Učitavam…</div></div><div id="map"></div>
+    <div class="ctl"><button class="iconbtn" id="play" aria-label="Pusti/zaustavi"><svg viewBox="0 0 24 24" id="playsvg"><path d="M7 5l12 7-12 7z"/></svg></button><input type="range" id="slide" min="0" max="0" value="0"><div class="tm" id="tm"></div></div>
+    <div class="note" style="margin-top:8px">Boje: svetlo plavo = slaba, žuto/crveno = jaka kiša. Radar prikazuje poslednja 2 sata i kratku prognozu kretanja (RainViewer).</div></div></div>`;
+};
+function setMapTheme() { const m = $("#map"); if (m) m.classList.toggle("dark-map", isDark()); }
+async function initRadar() {
+  if (!$("#map") || typeof L === "undefined") { if ($("#rnote")) $("#rnote").textContent = "Mapa nije dostupna."; return; }
+  if (window.__map) { window.__map.remove(); window.__map = null; }
+  const p = state.place, map = L.map("map", { zoomControl: true, attributionControl: true }).setView([p.lat, p.lon], 7);
+  window.__map = map;
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 18, attribution: "© OpenStreetMap", className: "osm" }).addTo(map);
+  setMapTheme();
+  L.circleMarker([p.lat, p.lon], { radius: 7, color: "#fff", weight: 2, fillColor: "#2F80ED", fillOpacity: 1 }).addTo(map);
+  try {
+    const idx = await (await fetch("https://api.rainviewer.com/public/weather-maps.json")).json();
+    const frames = [...(idx.radar.past || []), ...(idx.radar.nowcast || [])], layers = frames.map((f) => L.tileLayer(`${idx.host}${f.path}/256/{z}/{x}/{y}/2/1_1.png`, { opacity: 0, maxNativeZoom: 7, maxZoom: 18, zIndex: 5 }).addTo(map));
+    const sl = $("#slide"); sl.max = frames.length - 1;
+    let cur = frames.length - 1 - (idx.radar.nowcast || []).length, playing = false;
+    const show = (i) => { layers.forEach((l, k) => l.setOpacity(k === i ? 0.75 : 0)); cur = i; sl.value = i; const f = frames[i], d = new Date(f.time * 1000); $("#tm").textContent = `${pad(d.getHours())}:${pad(d.getMinutes())} ${i > frames.length - 1 - (idx.radar.nowcast || []).length ? "(prognoza)" : ""}`; };
+    show(Math.max(0, cur)); $("#rnote").textContent = "RainViewer";
+    sl.oninput = () => { playing = false; setPlay(); show(+sl.value); };
+    const setPlay = () => { $("#playsvg").innerHTML = playing ? '<path d="M7 5v14M17 5v14"/>' : '<path d="M7 5l12 7-12 7z"/>'; };
+    clearInterval(radarTimer);
+    radarTimer = setInterval(() => { if (playing && $("#map")) show((cur + 1) % frames.length); }, 600);
+    $("#play").onclick = () => { playing = !playing; if (playing && cur >= frames.length - 1) cur = -1; setPlay(); };
+  } catch (e) { $("#rnote").textContent = "Radar trenutno nije dostupan."; }
+}
+
+/* ============================================================ shell */
+async function render() {
+  const app = $("#app"), tab = V[state.tab] ? state.tab : "danas";
+  document.querySelectorAll("#tabs button").forEach((b) => b.classList.toggle("on", b.dataset.t === tab));
+  app.innerHTML = '<div class="skel"></div>';
+  const token = ++render.n;
+  try { const html = await V[tab](); if (token === render.n) app.innerHTML = html; }
+  catch (e) { if (token === render.n) app.innerHTML = `<div class="card err">Podaci trenutno nisu dostupni.<br><span class="note">${esc(e.message)}</span><br><br><button class="seg" onclick="render()"><span style="padding:6px 14px">Pokušaj ponovo</span></button></div>`; }
+  document.title = `${state.place.name} · Kravos Vreme`;
+}
+render.n = 0;
+function renderPlaces() {
+  const box = $("#places"), cur = state.place;
+  const list = [defPlace, ...state.saved.filter((s) => s.name !== defPlace.name)];
+  if (!list.some((s) => s.lat === cur.lat && s.lon === cur.lon)) list.push(cur);
+  box.innerHTML = list.map((p, i) => `<button data-i="${i}" class="${p.lat === cur.lat && p.lon === cur.lon ? "on" : ""}">${esc(p.name)}</button>`).join("");
+  box.onclick = (e) => { const b = e.target.closest("button"); if (b) setPlace(list[+b.dataset.i], false); };
+}
+function setPlace(p, save = true) {
+  state.place = p; store.set("place", p);
+  if (save && !state.saved.some((s) => s.lat === p.lat && s.lon === p.lon) && !(p.lat === defPlace.lat && p.lon === defPlace.lon)) { state.saved = [p, ...state.saved].slice(0, 8); store.set("saved", state.saved); }
+  for (const k of ["fc", "aq", "sd", "sw", "sm"]) state[k] = null;
+  renderPlaces(); render();
+}
+$("#tabs").onclick = (e) => { const b = e.target.closest("button"); if (!b) return; state.tab = b.dataset.t; location.hash = state.tab; };
+$("#cfg").onclick = () => { state.tab = "podesavanja"; location.hash = "podesavanja"; };
+addEventListener("hashchange", () => { state.tab = (location.hash || "#danas").slice(1) || "danas"; if (state.tab !== "radar" && window.__map) { window.__map.remove(); window.__map = null; clearInterval(radarTimer); } render(); });
+$("#gps").onclick = () => {
+  if (!navigator.geolocation) return alert("Pregledač ne podržava lokaciju.");
+  navigator.geolocation.getCurrentPosition(async (pos) => {
+    const lat = pos.coords.latitude, lon = pos.coords.longitude; let name = "Moja lokacija", region = "";
+    try { const r = await (await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=sr`)).json(); name = latin(r.city || r.locality || name); region = latin(r.countryName || ""); } catch (e) {}
+    setPlace({ name, region, lat, lon });
+  }, () => alert("Lokacija nije dozvoljena. Pretraži mesto po imenu."), { timeout: 10000 });
+};
+let qt = null;
+$("#q").addEventListener("input", (e) => {
+  clearTimeout(qt); const v = e.target.value.trim(), res = $("#res");
+  if (v.length < 2) { res.classList.remove("on"); return; }
+  qt = setTimeout(async () => {
+    try {
+      const r = await (await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(v)}&count=8&language=sr&format=json`)).json();
+      const items = (r.results || []).map((x) => ({ name: latin(x.name), region: [x.admin1, x.country].filter(Boolean).map(latin).join(", "), lat: x.latitude, lon: x.longitude }));
+      res.innerHTML = items.length ? items.map((p, i) => `<button data-i="${i}">${esc(p.name)}<small>${esc(p.region)}</small></button>`).join("") : '<div class="err">Nema rezultata</div>';
+      res.classList.add("on");
+      res.onclick = (ev) => { const b = ev.target.closest("button"); if (!b) return; res.classList.remove("on"); $("#q").value = ""; setPlace(items[+b.dataset.i]); };
+    } catch (err) { res.innerHTML = '<div class="err">Pretraga nije dostupna</div>'; res.classList.add("on"); }
+  }, 250);
+});
+document.addEventListener("click", (e) => { if (!e.target.closest(".search")) $("#res").classList.remove("on"); });
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", applyTheme);
+applyTheme(); renderPlaces(); render();
+if (!store.get("asked", false) && !store.get("place", null)) { store.set("asked", true); }
+</script>
+</body>
+</html>
