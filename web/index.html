@@ -345,7 +345,7 @@ V.danas = async () => {
     <div class="stats"><div>Vetar<b>${W(c.wind_speed_10m)} ${dir(c.wind_direction_10m)}</b></div><div>Udari<b>${W(c.wind_gusts_10m)}</b></div><div>Vlažnost<b>${Math.round(c.relative_humidity_2m)}%</b></div><div>Pritisak<b>${Math.round(c.pressure_msl)} hPa</b></div></div></div>
   </div></div>`;
   h += `<div class="card c12"><h3>Narednih 24 sata</h3><div class="hours">${fc.hourly.time.slice(hi, hi + 24).map((t, k) => { const j = hi + k, hp = fc.hourly.precipitation_probability[j]; return `<div class="hr"><div class="h">${k === 0 ? "Sad" : t.slice(11, 13) + "h"}</div>${icon(fc.hourly.weather_code[j], !!fc.hourly.is_day[j])}<div class="t">${T(fc.hourly.temperature_2m[j])}</div><div class="p">${hp >= 10 ? hp + "%" : ""}</div></div>`; }).join("")}</div></div>`;
-  h += `<div class="card c12"><div class="row"><h3 style="margin:0">Temperatura i padavine — 48 h</h3></div>${hourlyChart(fc, hi, 48)}<div class="note">Narandžasta linija je temperatura, plavi stubići su padavine.</div></div>`;
+  h += `<div class="card c12"><div class="row"><h3 style="margin:0">Temperatura i padavine — 48 h</h3></div><div style="overflow-x:auto"><div style="min-width:680px">${hourlyChart(fc, hi, 48)}</div></div><div class="note">Narandžasta linija je temperatura, plavi stubići su padavine.</div></div>`;
   h += `<div class="card c12"><h3>Detalji</h3><div class="tiles">
     <div class="tile"><div class="k">UV indeks</div><div class="v">${num(c.uv_index, 1)}</div><div class="s" style="color:${uv[1]}">${uv[0]}</div></div>
     <div class="tile"><div class="k">Oblačnost</div><div class="v">${Math.round(c.cloud_cover)}%</div><div class="s">Rosa ${T(c.dew_point_2m)}</div></div>
