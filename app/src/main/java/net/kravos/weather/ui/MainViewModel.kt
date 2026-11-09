@@ -171,6 +171,19 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
         rebuildPlaces()
     }
 
+    /** Settings switch: automatic location on/off. Turning it on also selects the current location. */
+    fun setGps(on: Boolean) {
+        if (on) {
+            prefs.selectedId = "gps"
+            enableGps()
+        } else {
+            prefs.useGps = false
+            if (prefs.selectedId == "gps") prefs.selectedId = null
+            rebuildPlaces()
+            refresh()
+        }
+    }
+
     fun enableGps() {
         prefs.useGps = true
         rebuildPlaces()

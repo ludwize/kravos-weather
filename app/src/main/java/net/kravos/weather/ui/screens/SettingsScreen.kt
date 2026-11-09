@@ -48,6 +48,7 @@ fun SettingsScreen(
     onWind: (WindUnit) -> Unit,
     onTheme: (ThemeMode) -> Unit,
     onDynamic: (Boolean) -> Unit,
+    onGps: (Boolean) -> Unit,
 ) {
     val ctx = LocalContext.current
     var tick by remember { mutableIntStateOf(0) } // recompose after toggles
@@ -69,6 +70,13 @@ fun SettingsScreen(
 
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
         if (tick < 0) Text("")
+        Section("Lokacija") {
+            Toggle(
+                "Automatska lokacija (GPS)",
+                "Pri svakom otvaranju aplikacije uzima trenutnu lokaciju telefona i prikazuje prognozu za nju",
+                prefs.useGps,
+            ) { onGps(it) }
+        }
         Section("Jedinice") {
             ChipGroup("Temperatura") {
                 TempUnit.entries.forEach { t ->

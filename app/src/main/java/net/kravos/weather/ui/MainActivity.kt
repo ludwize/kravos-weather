@@ -167,7 +167,15 @@ private fun App(vm: MainViewModel, s: UiState, startScreen: Screen?) {
     ) { pad ->
         Box(Modifier.fillMaxSize().padding(pad)) {
             when {
-                screen == Screen.SETTINGS -> SettingsScreen(vm.settings, vm::setTempUnit, vm::setWindUnit, vm::setTheme, vm::setDynamic)
+                screen == Screen.SETTINGS -> SettingsScreen(
+                    vm.settings, vm::setTempUnit, vm::setWindUnit, vm::setTheme, vm::setDynamic,
+                    onGps = { on ->
+                        vm.setGps(on)
+                        if (on && !net.kravos.weather.location.Locator.hasPermission(vm.getApplication())) {
+                            locPerm.launch(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION))
+                        }
+                    },
+                )
                 screen == Screen.PLACES -> PlacesScreen(
                     s.places, s.selectedId, s.bundles, s.searchResults, s.searching, vm.settings.useGps, s.units,
                     onSearch = vm::search,
