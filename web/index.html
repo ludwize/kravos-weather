@@ -519,26 +519,39 @@ function renderPlaces() {
   const box = $("#places"), cur = state.place;
   const list = [defPlace, ...state.saved.filter((s) => s.name !== defPlace.name)];
   if (!list.some((s) => s.lat === cur.lat && s.lon === cur.lon)) list.push(cur);
-  box.innerHTML = list.map((p, i) => `<button data-i="${i}" class="${p.lat === cur.lat && p.lon === cur.lon ? "on" : ""}">${esc(p.name)}</button>`).join("");
+  box.innerHTML = list.map((p, i) => `<button data-i="${i}" class="${p.lat === cur.lat && p.lon === cur.lon ? "on" : ""}">${p.isGps ? "◎ " : ""}${esc(p.name)}</button>`).join("");
   box.onclick = (e) => { const b = e.target.closest("button"); if (b) setPlace(list[+b.dataset.i], false); };
 }
-function setPlace(p, save = true) {
+function setPlace(p, save = true, fromGps = false) {
+  if (!fromGps) { state.gps = false; store.set("gps", false); }
   state.place = p; store.set("place", p);
-  if (save && !state.saved.some((s) => s.lat === p.lat && s.lon === p.lon) && !(p.lat === defPlace.lat && p.lon === defPlace.lon)) { state.saved = [p, ...state.saved].slice(0, 8); store.set("saved", state.saved); }
+  if (save && !p.isGps && !state.saved.some((s) => s.lat === p.lat && s.lon === p.lon) && !(p.lat === defPlace.lat && p.lon === defPlace.lon)) { state.saved = [p, ...state.saved].slice(0, 8); store.set("saved", state.saved); }
   for (const k of ["fc", "aq", "sd", "sw", "sm"]) state[k] = null;
   renderPlaces(); render();
 }
 $("#tabs").onclick = (e) => { const b = e.target.closest("button"); if (!b) return; state.tab = b.dataset.t; location.hash = state.tab; };
 $("#cfg").onclick = () => { state.tab = "podesavanja"; location.hash = "podesavanja"; };
 addEventListener("hashchange", () => { state.tab = (location.hash || "#danas").slice(1) || "danas"; if (state.tab !== "radar" && window.__map) { window.__map.remove(); window.__map = null; clearInterval(radarTimer); } render(); });
-$("#gps").onclick = () => {
-  if (!navigator.geolocation) return alert("Pregledač ne podržava lokaciju.");
+/* ---- GPS: on open (when in GPS mode) and on button press */
+state.gps = store.get("gps", true);
+function locate(manual) {
+  if (!navigator.geolocation) { if (manual) alert("Pregledač ne podržava lokaciju."); return; }
   navigator.geolocation.getCurrentPosition(async (pos) => {
-    const lat = pos.coords.latitude, lon = pos.coords.longitude; let name = "Moja lokacija", region = "";
-    try { const r = await (await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=sr`)).json(); name = latin(r.city || r.locality || name); region = latin(r.countryName || ""); } catch (e) {}
-    setPlace({ name, region, lat, lon });
-  }, () => alert("Lokacija nije dozvoljena. Pretraži mesto po imenu."), { timeout: 10000 });
-};
+    const lat = pos.coords.latitude, lon = pos.coords.longitude, prev = state.place;
+    const same = prev.isGps && Math.hypot((prev.lat - lat) * 111, (prev.lon - lon) * 80) < 1;
+    state.gps = true; store.set("gps", true);
+    if (same) { if (manual) setPlace(prev, false, true); return; }
+    let name = "Moja lokacija", region = "";
+    try { const r = await (await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=sr`)).json(); name = latin(r.locality || r.city || name); region = latin(r.countryName || ""); } catch (e) {}
+    setPlace({ name, region, lat, lon, isGps: true }, false, true);
+  }, () => { if (manual) alert("Lokacija nije dozvoljena. Pretraži mesto po imenu."); }, { timeout: 10000, maximumAge: 600000, enableHighAccuracy: false });
+}
+$("#gps").onclick = () => locate(true);
+async function autoLocate() {
+  if (!state.gps) return;
+  try { const st = await navigator.permissions.query({ name: "geolocation" }); if (st.state === "denied") return; } catch (e) {}
+  locate(false);
+}
 let qt = null;
 $("#q").addEventListener("input", (e) => {
   clearTimeout(qt); const v = e.target.value.trim(), res = $("#res");
@@ -555,8 +568,7 @@ $("#q").addEventListener("input", (e) => {
 });
 document.addEventListener("click", (e) => { if (!e.target.closest(".search")) $("#res").classList.remove("on"); });
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change", applyTheme);
-applyTheme(); renderPlaces(); render();
-if (!store.get("asked", false) && !store.get("place", null)) { store.set("asked", true); }
+applyTheme(); renderPlaces(); render(); autoLocate();
 </script>
 </body>
 </html>
