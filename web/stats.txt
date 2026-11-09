@@ -1,2 +1,2 @@
 page errors: []
-bad responses: []
+bad responses: ['503 https://api.open-meteo.com/v1/forecast?latitude=44.8176&longitude=20.4569&timezone=auto&pa']
