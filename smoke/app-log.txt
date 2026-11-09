@@ -1,217 +1,206 @@
-125:10-26 15:26:04.391   520  2553 V SplashScreenExceptionList: SplashScreen checking exception for package net.kravos.weather (target sdk:35) -> false
-145:10-26 15:26:04.437   824   858 V WindowManagerShell: Transition requested: android.os.BinderProxy@982d154 TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=8 displayId=0 isRunning=true baseIntent=Intent { flg=0x10000000 cmp=net.kravos.weather/.ui.MainActivity } baseActivity=ComponentInfo{net.kravos.weather/net.kravos.weather.ui.MainActivity} topActivity=ComponentInfo{net.kravos.weather/net.kravos.weather.ui.MainActivity} origActivity=null realActivity=ComponentInfo{net.kravos.weather/net.kravos.weather.ui.MainActivity} numActivities=1 lastActiveTime=36036 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{android.window.IWindowContainerToken$Stub$Proxy@372e8fd} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=null topActivityInfo=ActivityInfo{b9879f2 net.kravos.weather.ui.MainActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= false topActivityLetterboxed= false isFromDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 locusId=null displayAreaFeatureId=1 cameraCompatControlState=hidden}, remoteTransition = null, displayChange = null }
-149:10-26 15:26:04.442   520  2553 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=net.kravos.weather/.ui.MainActivity} with LAUNCH_SINGLE_TOP from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
-153:10-26 15:26:04.455   520  2775 D CoreBackPreview: Window{6b1221 u0 Splash Screen net.kravos.weather}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@532e459, mPriority=0, mIsAnimationCallback=false}
-154:10-26 15:26:04.458   520   548 I ActivityManager: Start proc 3582:net.kravos.weather/u0a192 for next-top-activity {net.kravos.weather/net.kravos.weather.ui.MainActivity}
-195:10-26 15:26:04.510   520   537 V WindowManager: Sent Transition #6 createdAt=10-26 15:26:04.359 via request=TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=8 displayId=0 isRunning=true baseIntent=Intent { flg=0x10000000 cmp=net.kravos.weather/.ui.MainActivity } baseActivity=ComponentInfo{net.kravos.weather/net.kravos.weather.ui.MainActivity} topActivity=ComponentInfo{net.kravos.weather/net.kravos.weather.ui.MainActivity} origActivity=null realActivity=ComponentInfo{net.kravos.weather/net.kravos.weather.ui.MainActivity} numActivities=1 lastActiveTime=36036 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{RemoteToken{3b5761b Task{cd6c227 #8 type=standard A=10192:net.kravos.weather}}} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=null topActivityInfo=ActivityInfo{221b3b8 net.kravos.weather.ui.MainActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= false topActivityLetterboxed= false isFromDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 locusId=null displayAreaFeatureId=1 cameraCompatControlState=hidden}, remoteTransition = null, displayChange = null }
-201:10-26 15:26:04.516   520   537 V WindowManager:     info={id=6 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{3b5761b Task{cd6c227 #8 type=standard A=10192:net.kravos.weather}}} m=OPEN f=NONE leash=Surface(name=Task=8)/@0x6246d15 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{WCT{RemoteToken{43b7cf6 Task{24e2825 #1 type=home}}} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0x903c352 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0}]}
-670:10-26 15:26:04.762  3582  3582 D nativeloader: Configuring clns-6 for other apk /data/app/~~YAVrReu_jmQ5XhdjGYDXiQ==/net.kravos.weather-ZEn6aBerdMVqFhxzkYzDeg==/base.apk. target_sdk_version=35, uses_libraries=, library_path=/data/app/~~YAVrReu_jmQ5XhdjGYDXiQ==/net.kravos.weather-ZEn6aBerdMVqFhxzkYzDeg==/lib/x86_64:/data/app/~~YAVrReu_jmQ5XhdjGYDXiQ==/net.kravos.weather-ZEn6aBerdMVqFhxzkYzDeg==/base.apk!/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/net.kravos.weather
-675:10-26 15:26:04.765  3582  3582 V GraphicsEnvironment: ANGLE GameManagerService for net.kravos.weather: false
-676:10-26 15:26:04.765  3582  3582 V GraphicsEnvironment: net.kravos.weather is not listed in per-application setting
-780:10-26 15:26:04.971   520  1717 D CoreBackPreview: Window{8610540 u0 net.kravos.weather/net.kravos.weather.ui.MainActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@998f7a5, mPriority=0, mIsAnimationCallback=false}
-886:10-26 15:26:05.152   520  2159 E JobScheduler.JobStatus: App net.kravos.weather became active but still in NEVER bucket
-989:10-26 15:26:05.504   520   546 D AppWidgetServiceImpl: Provider info from ComponentInfo{net.kravos.weather/net.kravos.weather.widget.WeatherWidgetReceiver} won't be persisted.
-999:10-26 15:26:05.547   520  2776 D ConnectivityService: requestNetwork for uid/pid:10192/3582 activeRequest: null callbackRequest: 100 [NetworkRequest [ REQUEST id=101, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: net.kravos.weather UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647
-1001:10-26 15:26:05.550   520   747 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=101, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: net.kravos.weather UnderlyingNetworks: Null] ]
-1002:10-26 15:26:05.550   520   747 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=101, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: net.kravos.weather UnderlyingNetworks: Null] ]
-1003:10-26 15:26:05.550   520   747 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=101, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: net.kravos.weather UnderlyingNetworks: Null] ]
-1004:10-26 15:26:05.550   520   747 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=101, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: net.kravos.weather UnderlyingNetworks: Null] ]
-1041:10-26 15:26:05.654   520   537 I ActivityTaskManager: Displayed net.kravos.weather/.ui.MainActivity for user 0: +1s267ms
-1043:10-26 15:26:05.703  3582  3582 D WM-WorkerWrapper: Starting work for net.kravos.weather.work.RefreshWorker
-1044:10-26 15:26:05.731  3582  3641 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=47a1e5f3-6783-4ad3-a938-38dce38db912, tags={ net.kravos.weather.work.RefreshWorker } ]
-1046:10-26 15:26:05.735   520  2524 W InputManager-JNI: Input channel object '6b1221 Splash Screen net.kravos.weather (client)' was disposed without first being removed with the input manager!
-1047:10-26 15:26:05.736   520  1100 D CoreBackPreview: Window{6b1221 u0 Splash Screen net.kravos.weather EXITING}: Setting back callback null
-1049:10-26 15:26:05.737   520  2776 I ImeTracker: net.kravos.weather:448d3628: onRequestHide at ORIGIN_SERVER_HIDE_INPUT reason HIDE_UNSPECIFIED_WINDOW
-1050:10-26 15:26:05.737   520  2776 I ImeTracker: net.kravos.weather:448d3628: onCancelled at PHASE_SERVER_SHOULD_HIDE
-1088:10-26 15:26:05.760   520  1717 E JobScheduler.JobStatus: App net.kravos.weather became active but still in NEVER bucket
-1098:10-26 15:26:05.774  1504  1504 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1877 onStartInput(EditorInfo{inputType=0x0(NULL) imeOptions=0x0 privateImeOptions=null actionName=UNSPECIFIED actionLabel=null actionId=0 initialSelStart=-1 initialSelEnd=-1 initialCapsMode=0x0 hintText=null label=null packageName=net.kravos.weather fieldId=0 fieldName=null extras=null}, false)
-1176:10-26 15:26:05.838   520   520 W JobScheduler: Job didn't exist in JobStore: c1d7e8a {androidx.work.systemjobscheduler} #u0a192/0 @androidx.work.systemjobscheduler@net.kravos.weather/androidx.work.impl.background.systemjob.SystemJobService
-1224:10-26 15:26:06.000   827   827 I SafetyLabelChangedBroadcastReceiver: received broadcast packageName: net.kravos.weather, current user: UserHandle{0}, packageChangeEvent: NEW_INSTALL, intent user: UserHandle{0}
-2531:10-26 15:26:07.960   520   546 D AppWidgetServiceImpl: Provider info from ComponentInfo{net.kravos.weather/net.kravos.weather.widget.WeatherWidgetReceiver} won't be persisted.
-2534:10-26 15:26:07.967  1621  1621 I AiAiEcho: AppFetcherImplV2 updateApps package:[net.kravos.weather], userId:[0], reason:[package is added.].
-2682:10-26 15:26:08.146  1621  1621 I AiAiEcho: AppFetcherImpl onPackageChanged net.kravos.weather.
-2683:10-26 15:26:08.147  1621  2822 I AiAiEcho: AppIndexer Package:[net.kravos.weather] UserProfile:[0] Enabled:[true].
-2684:10-26 15:26:08.147  1621  2822 I AiAiEcho: AppFetcherImplV2 updateApps package:[net.kravos.weather], userId:[0], reason:[package is updated.].
-4382:10-26 15:26:10.100  3582  4118 D ProfileInstaller: Installing profile for net.kravos.weather
-5475:10-26 15:26:12.585  1422  3966 I BlockstoreStorage: Clearing Blockstore Data for package net.kravos.weather [CONTEXT service_id=258 ]
-5478:10-26 15:26:12.588  1368  3737 I FontLog : Package net.kravos.weather has no metadata [CONTEXT service_id=132 ]
-11292:10-26 15:26:16.780  1040  1040 D CarrierSvcBindHelper: onPackageModified: net.kravos.weather
-11296:10-26 15:26:16.784  1040  1323 D ImsResolver: maybeAddedImsService, packageName: net.kravos.weather
-11381:10-26 15:26:16.907   520   546 D AppWidgetServiceImpl: Provider info from ComponentInfo{net.kravos.weather/net.kravos.weather.widget.WeatherWidgetReceiver} won't be persisted.
-11385:10-26 15:26:16.908   520   546 D AppWidgetServiceImpl: Provider info from ComponentInfo{net.kravos.weather/net.kravos.weather.widget.WeatherWidgetReceiver} won't be persisted.
-11389:10-26 15:26:16.909   520   546 D AppWidgetServiceImpl: Provider info from ComponentInfo{net.kravos.weather/net.kravos.weather.widget.WeatherWidgetReceiver} won't be persisted.
-11391:10-26 15:26:16.909  1621  1621 I AiAiEcho: AppFetcherImpl onPackageChanged net.kravos.weather.
-11397:10-26 15:26:16.910   520   546 D AppWidgetServiceImpl: Provider info from ComponentInfo{net.kravos.weather/net.kravos.weather.widget.WeatherWidgetReceiver} won't be persisted.
-11415:10-26 15:26:16.923  1621  2822 I AiAiEcho: AppIndexer Package:[net.kravos.weather] UserProfile:[0] Enabled:[true].
-11416:10-26 15:26:16.923  1621  2822 I AiAiEcho: AppFetcherImplV2 updateApps package:[net.kravos.weather], userId:[0], reason:[package is updated.].
-11908:10-26 15:26:17.855  3582  3582 I KravosWeather: located Novi Beograd 44.817598333333336,20.412198333333333 RS
-12185:10-26 15:26:18.359  3582  3660 I KravosWeather: GET https://api.open-meteo.com/v1/forecast?latitude=44.8176&longitude=20.4122&timezone=auto&past_days=1&forecast_days=16&wind_speed_unit=kmh&current=temperature_2m, -> 200 (39367 b) {"latitude":44.824757,"longitude":20.41275,"generationtime_ms":78.53567600250244,"utc_offset_seconds":3600,"timezone":"Europe/Belgrade","timezone_abbreviation":"GMT+1","elevation":78.0,"current_units":{"time":"iso8601","
-12187:10-26 15:26:18.465  3582  3661 I KravosWeather: GET https://air-quality-api.open-meteo.com/v1/air-quality?latitude=44.8176&longitude=20.4122&timezone=auto&forecast_days=5&current=european_aqi,us_aqi,pm10,pm2_5,ni -> 200 (8181 b) {"latitude":44.8,"longitude":20.400002,"generationtime_ms":1.6247034072875977,"utc_offset_seconds":3600,"timezone":"Europe/Belgrade","timezone_abbreviation":"GMT+1","elevation":78.0,"current_units":{"time":"iso8601","int
-12188:10-26 15:26:18.468  3582  4517 I KravosWeather: GET https://seasonal-api.open-meteo.com/v1/seasonal?latitude=44.8176&longitude=20.4122&timezone=auto&monthly=temperature_2m_mean,temperature_2m_anomaly,precipitatio -> 200 (649 b) {"latitude":44.824356,"longitude":20.181818,"generationtime_ms":0.11670589447021484,"utc_offset_seconds":3600,"timezone":"Europe/Belgrade","timezone_abbreviation":"GMT+1","elevation":78.0,"monthly_units":{"time":"iso8601
-12189:10-26 15:26:18.475  3582  4518 I KravosWeather: GET https://seasonal-api.open-meteo.com/v1/seasonal?latitude=44.8176&longitude=20.4122&timezone=auto&weekly=temperature_2m_mean,temperature_2m_anomaly,precipitation -> 200 (1374 b) {"latitude":44.824356,"longitude":20.181818,"generationtime_ms":1.4896392822265625,"utc_offset_seconds":3600,"timezone":"Europe/Belgrade","timezone_abbreviation":"GMT+1","elevation":78.0,"weekly_units":{"time":"iso8601",
-12190:10-26 15:26:18.476  3582  4519 I KravosWeather: GET https://seasonal-api.open-meteo.com/v1/seasonal?latitude=44.8176&longitude=20.4122&timezone=auto&forecast_days=46&daily=temperature_2m_max,temperature_2m_min,pr -> 200 (43409 b) {"latitude":44.824356,"longitude":20.181818,"generationtime_ms":7.930159568786621,"utc_offset_seconds":3600,"timezone":"Europe/Belgrade","timezone_abbreviation":"GMT+1","elevation":78.0,"daily_units":{"time":"iso8601","t
-13617:10-26 15:26:21.296  3582  4520 I KravosWeather: GET https://feeds.meteoalarm.org/api/v1/warnings/feeds-serbia -> 200 (946726 b) {"warnings":[{"alert":{"identifier":"2.49.0.0.688.0.20261021050003.712748","incidents":"Update","info":[{"area":[{"areaDesc":"Banat","geocode":[{"value":"RS001","valueName":"EMMA_ID"}]}],"audience":"Private","category":[
-13629:10-26 15:26:21.334  3582  3582 I KravosWeather: long range: days=46 weeks=7 months=6
-13630:10-26 15:26:21.334  3582  3582 I KravosWeather: bundle Novi Beograd: fc=true hours=408 days=17 min15=24 air=true eaqi=22.0 pollen={ALDER=0.0, BIRCH=0.0, OLIVE=0.0, GRASS=0.5, MUGWORT=0.0, RAGWEED=0.0} warnings=0
-22370:10-26 15:26:31.035  5064  5064 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-22371:10-26 15:26:31.047  5064  5064 I AndroidRuntime: Using default boot image
-22372:10-26 15:26:31.047  5064  5064 I AndroidRuntime: Leaving lock profiling enabled
-22468:10-26 15:26:31.265  5064  5064 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
-23579:10-26 15:26:32.370  5064  5064 D AndroidRuntime: Shutting down VM
-26278:10-26 15:26:36.310  5466  5466 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-26279:10-26 15:26:36.313  5466  5466 I AndroidRuntime: Using default boot image
-26280:10-26 15:26:36.313  5466  5466 I AndroidRuntime: Leaving lock profiling enabled
-26318:10-26 15:26:36.405  5466  5466 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
-26874:10-26 15:26:37.451  5466  5466 D AndroidRuntime: Shutting down VM
-41083:10-26 15:26:59.812  5799  5799 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-41084:10-26 15:26:59.816  5799  5799 I AndroidRuntime: Using default boot image
-41085:10-26 15:26:59.816  5799  5799 I AndroidRuntime: Leaving lock profiling enabled
-41098:10-26 15:26:59.887  5799  5799 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
-41210:10-26 15:27:00.912  5799  5799 D AndroidRuntime: Shutting down VM
-41338:10-26 15:27:02.453   520   537 V WindowManager:     info={id=7 t=TO_FRONT f=0x80 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{43b7cf6 Task{24e2825 #1 type=home}}} m=TO_FRONT f=SHOW_WALLPAPER|MOVE_TO_TOP leash=Surface(name=Task=1)/@0x903c352 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{WCT{RemoteToken{3b5761b Task{cd6c227 #8 type=standard A=10192:net.kravos.weather}}} m=TO_BACK f=NONE leash=Surface(name=Task=8)/@0x6246d15 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{null m=TO_FRONT f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{a354d37 token=android.os.Binder@8ee2699})/@0xf5b39ed sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0}]}
-41478:10-26 15:27:10.425  5854  5854 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-41479:10-26 15:27:10.428  5854  5854 I AndroidRuntime: Using default boot image
-41480:10-26 15:27:10.428  5854  5854 I AndroidRuntime: Leaving lock profiling enabled
-41493:10-26 15:27:10.481  5854  5854 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
-41540:10-26 15:27:11.547  5854  5854 D AndroidRuntime: Shutting down VM
-41741:10-26 15:27:18.029  5909  5909 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-41742:10-26 15:27:18.032  5909  5909 I AndroidRuntime: Using default boot image
-41743:10-26 15:27:18.032  5909  5909 I AndroidRuntime: Leaving lock profiling enabled
-41756:10-26 15:27:18.087  5909  5909 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
-41815:10-26 15:27:19.120  5909  5909 D AndroidRuntime: Shutting down VM
-42635:10-26 15:27:34.446  6002  6002 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-42637:10-26 15:27:34.450  6002  6002 I AndroidRuntime: Using default boot image
-42638:10-26 15:27:34.450  6002  6002 I AndroidRuntime: Leaving lock profiling enabled
-42686:10-26 15:27:34.564  6002  6002 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
-43190:10-26 15:27:35.627  6002  6002 D AndroidRuntime: Shutting down VM
-43405:10-26 15:27:36.596   520   537 V WindowManager:     info={id=8 t=TO_FRONT f=0x80 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{43b7cf6 Task{24e2825 #1 type=home}}} m=TO_FRONT f=SHOW_WALLPAPER|MOVE_TO_TOP leash=Surface(name=Task=1)/@0x903c352 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{WCT{RemoteToken{3b5761b Task{cd6c227 #8 type=standard A=10192:net.kravos.weather}}} m=TO_BACK f=NONE leash=Surface(name=Task=8)/@0x6246d15 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{null m=TO_FRONT f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{a354d37 token=android.os.Binder@8ee2699})/@0xf5b39ed sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0}]}
-43632:10-26 15:27:50.240  6135  6135 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-43633:10-26 15:27:50.243  6135  6135 I AndroidRuntime: Using default boot image
-43634:10-26 15:27:50.243  6135  6135 I AndroidRuntime: Leaving lock profiling enabled
-43648:10-26 15:27:50.313  6135  6135 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
-43702:10-26 15:27:51.337  6135  6135 D AndroidRuntime: Shutting down VM
-43831:10-26 15:27:52.323   520   537 V WindowManager:     info={id=9 t=TO_FRONT f=0x80 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{43b7cf6 Task{24e2825 #1 type=home}}} m=TO_FRONT f=SHOW_WALLPAPER|MOVE_TO_TOP leash=Surface(name=Task=1)/@0x903c352 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{WCT{RemoteToken{3b5761b Task{cd6c227 #8 type=standard A=10192:net.kravos.weather}}} m=TO_BACK f=NONE leash=Surface(name=Task=8)/@0x6246d15 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{null m=TO_FRONT f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{a354d37 token=android.os.Binder@8ee2699})/@0xf5b39ed sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0}]}
-43865:10-26 15:27:52.880  3582  4520 I KravosWeather: GET https://api.rainviewer.com/public/weather-maps.json -> 200 (818 b) {"version":"2.0","generated":1793028323,"host":"https://tilecache.rainviewer.com","radar":{"past":[{"time":1793020800,"path":"/v2/radar/efcb35c464fa"},{"time":1793021400,"path":"/v2/radar/b6153f8b6c05"},{"time":179302200
-44165:10-26 15:28:15.365  6232  6232 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-44166:10-26 15:28:15.367  6232  6232 I AndroidRuntime: Using default boot image
-44167:10-26 15:28:15.367  6232  6232 I AndroidRuntime: Leaving lock profiling enabled
-44180:10-26 15:28:15.421  6232  6232 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
-44283:10-26 15:28:16.453  6232  6232 D AndroidRuntime: Shutting down VM
-44503:10-26 15:28:28.479  6341  6341 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-44504:10-26 15:28:28.482  6341  6341 I AndroidRuntime: Using default boot image
-44505:10-26 15:28:28.482  6341  6341 I AndroidRuntime: Leaving lock profiling enabled
-44518:10-26 15:28:28.536  6341  6341 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
-44573:10-26 15:28:29.562  6341  6341 D AndroidRuntime: Shutting down VM
-44827:10-26 15:28:33.595  6383  6383 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-44828:10-26 15:28:33.600  6383  6383 I AndroidRuntime: Using default boot image
-44829:10-26 15:28:33.600  6383  6383 I AndroidRuntime: Leaving lock profiling enabled
-44843:10-26 15:28:33.768  6383  6383 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
-44902:10-26 15:28:34.813  6383  6383 D AndroidRuntime: Shutting down VM
-45024:10-26 15:28:37.072  3582  6209 I KravosWeather: GET https://api.open-meteo.com/v1/forecast?latitude=49.121,49.121,49.121,49.121,49.121,49.121,49.121,49.121,49.121,48.018,48.018,48.018,48.018,48.018,48.018,48.018, -> 200 (189265 b) [{"latitude":49.12053,"longitude":16.16495,"generationtime_ms":3.0786991119384766,"utc_offset_seconds":3600,"timezone":"Europe/Prague","timezone_abbreviation":"GMT+1","elevation":391.0,"hourly_units":{"time":"iso8601","t
-45050:10-26 15:28:53.834  6424  6424 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-45051:10-26 15:28:53.836  6424  6424 I AndroidRuntime: Using default boot image
-45052:10-26 15:28:53.836  6424  6424 I AndroidRuntime: Leaving lock profiling enabled
-45065:10-26 15:28:53.893  6424  6424 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
-45110:10-26 15:28:54.919  6424  6424 D AndroidRuntime: Shutting down VM
-45211:10-26 15:29:05.032  6454  6454 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-45212:10-26 15:29:05.035  6454  6454 I AndroidRuntime: Using default boot image
-45213:10-26 15:29:05.035  6454  6454 I AndroidRuntime: Leaving lock profiling enabled
-45226:10-26 15:29:05.092  6454  6454 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
-45277:10-26 15:29:06.115  6454  6454 D AndroidRuntime: Shutting down VM
-45355:10-26 15:29:16.138  6476  6476 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-45356:10-26 15:29:16.141  6476  6476 I AndroidRuntime: Using default boot image
-45357:10-26 15:29:16.141  6476  6476 I AndroidRuntime: Leaving lock profiling enabled
-45370:10-26 15:29:16.202  6476  6476 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
-45429:10-26 15:29:17.225  6476  6476 D AndroidRuntime: Shutting down VM
-45516:10-26 15:29:18.143   520   537 V WindowManager:     info={id=10 t=TO_FRONT f=0x80 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{43b7cf6 Task{24e2825 #1 type=home}}} m=TO_FRONT f=SHOW_WALLPAPER|MOVE_TO_TOP leash=Surface(name=Task=1)/@0x903c352 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{WCT{RemoteToken{3b5761b Task{cd6c227 #8 type=standard A=10192:net.kravos.weather}}} m=TO_BACK f=NONE leash=Surface(name=Task=8)/@0x6246d15 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{null m=TO_FRONT f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{a354d37 token=android.os.Binder@8ee2699})/@0xf5b39ed sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0}]}
-45555:10-26 15:29:23.128  6508  6508 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-45556:10-26 15:29:23.131  6508  6508 I AndroidRuntime: Using default boot image
-45557:10-26 15:29:23.131  6508  6508 I AndroidRuntime: Leaving lock profiling enabled
-45570:10-26 15:29:23.183  6508  6508 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
-45638:10-26 15:29:24.202  6508  6508 D AndroidRuntime: Shutting down VM
-45731:10-26 15:29:30.231  6537  6537 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-45732:10-26 15:29:30.233  6537  6537 I AndroidRuntime: Using default boot image
-45733:10-26 15:29:30.233  6537  6537 I AndroidRuntime: Leaving lock profiling enabled
-45746:10-26 15:29:30.288  6537  6537 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
-45803:10-26 15:29:31.302  6537  6537 D AndroidRuntime: Shutting down VM
-45872:10-26 15:29:32.186  3582  3582 I ImeTracker: net.kravos.weather:1a1932ae: onRequestShow at ORIGIN_CLIENT_SHOW_SOFT_INPUT reason SHOW_SOFT_INPUT_BY_INSETS_API
-45876:10-26 15:29:32.187  1504  1504 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1877 onStartInput(EditorInfo{inputType=0x8001(Normal) imeOptions=0x2000006 privateImeOptions=null actionName=DONE actionLabel=null actionId=0 initialSelStart=0 initialSelEnd=0 initialCapsMode=0x0 hintText=null label=null packageName=net.kravos.weather fieldId=-1 fieldName=null extras=Bundle[mParcelledData.dataSize=404]}, false)
-45891:10-26 15:29:32.193  3582  3582 I ImeTracker: net.kravos.weather:2429887: onRequestShow at ORIGIN_CLIENT_SHOW_SOFT_INPUT reason SHOW_SOFT_INPUT
-45902:10-26 15:29:32.203  1504  1504 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1877 onStartInput(EditorInfo{inputType=0x8001(Normal) imeOptions=0x2000006 privateImeOptions=null actionName=DONE actionLabel=null actionId=0 initialSelStart=0 initialSelEnd=0 initialCapsMode=0x0 hintText=null label=null packageName=net.kravos.weather fieldId=-1 fieldName=null extras=Bundle[mParcelledData.dataSize=404]}, true)
-45906:10-26 15:29:32.204  1504  1504 I GoogleInputMethodService: GoogleInputMethodService.onStartInputView():1995 onStartInputView(EditorInfo{inputType=0x8001(Normal) imeOptions=0x2000006 privateImeOptions=null actionName=DONE actionLabel=null actionId=0 initialSelStart=0 initialSelEnd=0 initialCapsMode=0x0 hintText=null label=null packageName=net.kravos.weather fieldId=-1 fieldName=null extras=Bundle[{android.support.text.emoji.emojiCompat_metadataVersion=9, androidx.core.view.inputmethod.EditorInfoCompat.STYLUS_HANDWRITING_ENABLED=true, android.support.text.emoji.emojiCompat_replaceAll=false}]}, false)
-45916:10-26 15:29:32.222  1504  1504 I AndroidIME: AbstractIme.onActivate():86 LatinIme.onActivate() : EditorInfo = inputType=0x8001(Normal) imeOptions=0x2000006 privateImeOptions=null actionName=DONE actionLabel=null actionId=0 initialSelStart=0 initialSelEnd=0 initialCapsMode=0x0 hintText=null label=null packageName=net.kravos.weather fieldId=-1 fieldName=null extras=Bundle[{android.support.text.emoji.emojiCompat_metadataVersion=9, androidx.core.view.inputmethod.EditorInfoCompat.STYLUS_HANDWRITING_ENABLED=true, android.support.text.emoji.emojiCompat_replaceAll=false}], IncognitoMode = false, DeviceLocked = false
-45966:10-26 15:29:32.244   520   811 D CoreBackPreview: Window{8610540 u0 net.kravos.weather/net.kravos.weather.ui.MainActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@ac654e, mPriority=0, mIsAnimationCallback=false}
-45967:10-26 15:29:32.244   520  1100 I ImeTracker: net.kravos.weather:1a1932ae: onFailed at PHASE_WM_SHOW_IME_RUNNER
-46189:10-26 15:29:32.682  3582  3582 I ImeTracker: net.kravos.weather:2429887: onShown
-46222:10-26 15:29:32.752  3582  3582 W FrameTracker: Missed SF frame:PREDICTION_ERROR, 16636, 0, CUJ=J<IME_INSETS_ANIMATION::0@1@net.kravos.weather>
-46278:10-26 15:29:36.437  3582  6209 I KravosWeather: GET https://geocoding-api.open-meteo.com/v1/search?name=Thessaloniki&count=12&language=sr&format=json -> 200 (1163 b) {"results":[{"id":734077,"name":"Solun","latitude":40.64072,"longitude":22.93493,"elevation":-9999.0,"feature_code":"PPLA","country_code":"GR","admin1_id":6697801,"admin2_id":734075,"admin3_id":8133841,"timezone":"Europe
-47989:10-26 15:29:41.331  6701  6701 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-47990:10-26 15:29:41.335  6701  6701 I AndroidRuntime: Using default boot image
-47991:10-26 15:29:41.335  6701  6701 I AndroidRuntime: Leaving lock profiling enabled
-48004:10-26 15:29:41.401  6701  6701 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
-48098:10-26 15:29:42.418  6701  6701 D AndroidRuntime: Shutting down VM
-48267:10-26 15:29:43.316  3582  3582 I ImeTracker: net.kravos.weather:8ca8676e: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT_BY_INSETS_API
-48268:10-26 15:29:43.316  3582  3582 I ImeTracker: net.kravos.weather:7c9eb9a2: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT_BY_INSETS_API
-48271:10-26 15:29:43.321  3582  3582 I ImeTracker: net.kravos.weather:7c9eb9a2: onCancelled at PHASE_CLIENT_APPLY_ANIMATION
-48278:10-26 15:29:43.324  1504  1504 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1877 onStartInput(EditorInfo{inputType=0x0(NULL) imeOptions=0x0 privateImeOptions=null actionName=UNSPECIFIED actionLabel=null actionId=0 initialSelStart=-1 initialSelEnd=-1 initialCapsMode=0x0 hintText=null label=null packageName=net.kravos.weather fieldId=0 fieldName=null extras=null}, true)
-48283:10-26 15:29:43.325   520  2553 D CoreBackPreview: Window{8610540 u0 net.kravos.weather/net.kravos.weather.ui.MainActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@6e96607, mPriority=0, mIsAnimationCallback=false}
-48284:10-26 15:29:43.333  3582  3582 I ImeTracker: net.kravos.weather:ce79cfaf: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT_BY_INSETS_API
-48285:10-26 15:29:43.333   520  2771 I ImeTracker: net.kravos.weather:ce79cfaf: onCancelled at PHASE_SERVER_SHOULD_HIDE
-48286:10-26 15:29:43.333  3582  3582 I ImeTracker: net.kravos.weather:8ca8676e: onHidden
-48288:10-26 15:29:43.581  3582  3582 W FrameTracker: Missed SF frame:PREDICTION_ERROR, 17158, 0, CUJ=J<IME_INSETS_ANIMATION::1@1@net.kravos.weather>
-48289:10-26 15:29:43.650  3582  6209 I KravosWeather: GET https://api.open-meteo.com/v1/forecast?latitude=40.6407&longitude=22.9349&timezone=auto&past_days=1&forecast_days=16&wind_speed_unit=kmh&current=temperature_2m, -> 200 (39849 b) {"latitude":40.665985,"longitude":22.88998,"generationtime_ms":56.37490749359131,"utc_offset_seconds":7200,"timezone":"Europe/Athens","timezone_abbreviation":"GMT+2","elevation":10.0,"current_units":{"time":"iso8601","in
-48290:10-26 15:29:43.851  3582  6736 I KravosWeather: GET https://seasonal-api.open-meteo.com/v1/seasonal?latitude=40.6407&longitude=22.9349&timezone=auto&weekly=temperature_2m_mean,temperature_2m_anomaly,precipitation -> 200 (1371 b) {"latitude":40.6089,"longitude":23.0,"generationtime_ms":3.529071807861328,"utc_offset_seconds":7200,"timezone":"Europe/Athens","timezone_abbreviation":"GMT+2","elevation":10.0,"weekly_units":{"time":"iso8601","temperatu
-48291:10-26 15:29:43.852  3582  6210 I KravosWeather: GET https://air-quality-api.open-meteo.com/v1/air-quality?latitude=40.6407&longitude=22.9349&timezone=auto&forecast_days=5&current=european_aqi,us_aqi,pm10,pm2_5,ni -> 200 (8112 b) {"latitude":40.6,"longitude":22.900002,"generationtime_ms":1.6618967056274414,"utc_offset_seconds":7200,"timezone":"Europe/Athens","timezone_abbreviation":"GMT+2","elevation":10.0,"current_units":{"time":"iso8601","inter
-48292:10-26 15:29:43.857  3582  6738 I KravosWeather: GET https://seasonal-api.open-meteo.com/v1/seasonal?latitude=40.6407&longitude=22.9349&timezone=auto&monthly=temperature_2m_mean,temperature_2m_anomaly,precipitatio -> 200 (646 b) {"latitude":40.6089,"longitude":23.0,"generationtime_ms":0.22864341735839844,"utc_offset_seconds":7200,"timezone":"Europe/Athens","timezone_abbreviation":"GMT+2","elevation":10.0,"monthly_units":{"time":"iso8601","temper
-48293:10-26 15:29:43.882  3582  6734 I KravosWeather: GET https://seasonal-api.open-meteo.com/v1/seasonal?latitude=40.6407&longitude=22.9349&timezone=auto&forecast_days=46&daily=temperature_2m_max,temperature_2m_min,pr -> 200 (44334 b) {"latitude":40.6089,"longitude":23.0,"generationtime_ms":5.219101905822754,"utc_offset_seconds":7200,"timezone":"Europe/Athens","timezone_abbreviation":"GMT+2","elevation":10.0,"daily_units":{"time":"iso8601","temperatur
-48294:10-26 15:29:44.613  3582  6737 I KravosWeather: GET https://feeds.meteoalarm.org/api/v1/warnings/feeds-greece -> 200 (151277 b) {"warnings":[{"alert":{"identifier":"2.49.0.0.300.0.GR.261021120600.010000002","incidents":"Alert","info":[{"area":[{"areaDesc":"West Sterea","geocode":[{"value":"GR002","valueName":"EMMA_ID"}]}],"category":["Met"],"cert
-48295:10-26 15:29:44.625  3582  3582 I KravosWeather: long range: days=46 weeks=7 months=6
-48296:10-26 15:29:44.626  3582  3582 I KravosWeather: bundle Solun: fc=true hours=408 days=17 min15=24 air=true eaqi=28.0 pollen={ALDER=0.0, BIRCH=0.0, OLIVE=0.0, GRASS=0.0, MUGWORT=0.0, RAGWEED=0.0} warnings=27
-48440:10-26 15:30:00.933  6794  6794 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-48441:10-26 15:30:00.936  6794  6794 I AndroidRuntime: Using default boot image
-48442:10-26 15:30:00.936  6794  6794 I AndroidRuntime: Leaving lock profiling enabled
-48455:10-26 15:30:00.999  6794  6794 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
-48515:10-26 15:30:02.021  6794  6794 D AndroidRuntime: Shutting down VM
-48642:10-26 15:30:08.008  6823  6823 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-48643:10-26 15:30:08.013  6823  6823 I AndroidRuntime: Using default boot image
-48644:10-26 15:30:08.013  6823  6823 I AndroidRuntime: Leaving lock profiling enabled
-48657:10-26 15:30:08.066  6823  6823 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
-48705:10-26 15:30:09.085  6823  6823 D AndroidRuntime: Shutting down VM
-48807:10-26 15:30:22.582  6864  6864 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-48808:10-26 15:30:22.585  6864  6864 I AndroidRuntime: Using default boot image
-48809:10-26 15:30:22.585  6864  6864 I AndroidRuntime: Leaving lock profiling enabled
-48824:10-26 15:30:22.640  6864  6864 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
-48878:10-26 15:30:23.654  6864  6864 D AndroidRuntime: Shutting down VM
-49045:10-26 15:30:29.552  6888  6888 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-49046:10-26 15:30:29.554  6888  6888 I AndroidRuntime: Using default boot image
-49047:10-26 15:30:29.555  6888  6888 I AndroidRuntime: Leaving lock profiling enabled
-49061:10-26 15:30:29.611  6888  6888 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
-49134:10-26 15:30:30.637  6888  6888 D AndroidRuntime: Shutting down VM
-49183:10-26 15:30:31.530  3582  3582 I KravosWeather: long range: days=46 weeks=7 months=6
-49184:10-26 15:30:31.530  3582  3582 I KravosWeather: bundle Novi Beograd: fc=true hours=408 days=17 min15=24 air=true eaqi=22.0 pollen={ALDER=0.0, BIRCH=0.0, OLIVE=0.0, GRASS=0.5, MUGWORT=0.0, RAGWEED=0.0} warnings=0
-50431:10-26 15:30:45.184  6971  6971 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-50432:10-26 15:30:45.187  6971  6971 I AndroidRuntime: Using default boot image
-50433:10-26 15:30:45.187  6971  6971 I AndroidRuntime: Leaving lock profiling enabled
-50446:10-26 15:30:45.245  6971  6971 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
-50500:10-26 15:30:46.307  6971  6971 D AndroidRuntime: Shutting down VM
-50617:10-26 15:30:47.260   520   537 V WindowManager:     info={id=11 t=TO_FRONT f=0x80 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{43b7cf6 Task{24e2825 #1 type=home}}} m=TO_FRONT f=SHOW_WALLPAPER|MOVE_TO_TOP leash=Surface(name=Task=1)/@0x903c352 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{WCT{RemoteToken{3b5761b Task{cd6c227 #8 type=standard A=10192:net.kravos.weather}}} m=TO_BACK f=NONE leash=Surface(name=Task=8)/@0x6246d15 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{null m=TO_FRONT f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{a354d37 token=android.os.Binder@8ee2699})/@0xf5b39ed sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0}]}
-50724:10-26 15:30:52.356  7005  7005 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-50725:10-26 15:30:52.359  7005  7005 I AndroidRuntime: Using default boot image
-50726:10-26 15:30:52.359  7005  7005 I AndroidRuntime: Leaving lock profiling enabled
-50739:10-26 15:30:52.418  7005  7005 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
-50788:10-26 15:30:53.442  7005  7005 D AndroidRuntime: Shutting down VM
-50910:10-26 15:30:54.444   520   537 V WindowManager:     info={id=12 t=TO_FRONT f=0x80 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{43b7cf6 Task{24e2825 #1 type=home}}} m=TO_FRONT f=SHOW_WALLPAPER|MOVE_TO_TOP leash=Surface(name=Task=1)/@0x903c352 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{WCT{RemoteToken{3b5761b Task{cd6c227 #8 type=standard A=10192:net.kravos.weather}}} m=TO_BACK f=NONE leash=Surface(name=Task=8)/@0x6246d15 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{null m=TO_FRONT f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{a354d37 token=android.os.Binder@8ee2699})/@0xf5b39ed sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0}]}
-50931:10-26 15:30:55.208  3582  6737 I KravosWeather: GET https://api.rainviewer.com/public/weather-maps.json -> 200 (818 b) {"version":"2.0","generated":1793028626,"host":"https://tilecache.rainviewer.com","radar":{"past":[{"time":1793021400,"path":"/v2/radar/b6153f8b6c05"},{"time":1793022000,"path":"/v2/radar/0aaacc229cc4"},{"time":179302260
-51071:10-26 15:31:12.471  7100  7100 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-51072:10-26 15:31:12.474  7100  7100 I AndroidRuntime: Using default boot image
-51073:10-26 15:31:12.474  7100  7100 I AndroidRuntime: Leaving lock profiling enabled
-51086:10-26 15:31:12.530  7100  7100 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
-51142:10-26 15:31:13.553  7100  7100 D AndroidRuntime: Shutting down VM
-51224:10-26 15:31:15.810  3582  6737 I KravosWeather: GET https://api.open-meteo.com/v1/forecast?latitude=49.121,49.121,49.121,49.121,49.121,49.121,49.121,49.121,49.121,48.018,48.018,48.018,48.018,48.018,48.018,48.018, -> 200 (189266 b) [{"latitude":49.12053,"longitude":16.16495,"generationtime_ms":7.853031158447266,"utc_offset_seconds":3600,"timezone":"Europe/Prague","timezone_abbreviation":"GMT+1","elevation":391.0,"hourly_units":{"time":"iso8601","te
-51234:10-26 15:31:25.593  7133  7133 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-51235:10-26 15:31:25.595  7133  7133 I AndroidRuntime: Using default boot image
-51236:10-26 15:31:25.595  7133  7133 I AndroidRuntime: Leaving lock profiling enabled
-51249:10-26 15:31:25.652  7133  7133 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
-51296:10-26 15:31:26.679  7133  7133 D AndroidRuntime: Shutting down VM
-51458:10-26 15:31:27.593   520   537 V WindowManager:     info={id=13 t=TO_FRONT f=0x80 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{43b7cf6 Task{24e2825 #1 type=home}}} m=TO_FRONT f=SHOW_WALLPAPER|MOVE_TO_TOP leash=Surface(name=Task=1)/@0x903c352 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{WCT{RemoteToken{3b5761b Task{cd6c227 #8 type=standard A=10192:net.kravos.weather}}} m=TO_BACK f=NONE leash=Surface(name=Task=8)/@0x6246d15 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{null m=TO_FRONT f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{a354d37 token=android.os.Binder@8ee2699})/@0xf5b39ed sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0}]}
-51679:10-26 15:31:30.549   520   811 D JobScheduler: executeRunCommand(): net.kravos.weather/null/0 0 s=false f=true
+230:11-09 09:14:40.440   520  1425 V SplashScreenExceptionList: SplashScreen checking exception for package net.kravos.weather (target sdk:35) -> false
+232:11-09 09:14:40.441   520  1425 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=net.kravos.weather/.ui.MainActivity} with LAUNCH_SINGLE_TOP from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
+233:11-09 09:14:40.442   829   862 V WindowManagerShell: Transition requested: android.os.BinderProxy@6559497 TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=8 displayId=0 isRunning=true baseIntent=Intent { flg=0x10000000 cmp=net.kravos.weather/.ui.MainActivity } baseActivity=ComponentInfo{net.kravos.weather/net.kravos.weather.ui.MainActivity} topActivity=ComponentInfo{net.kravos.weather/net.kravos.weather.ui.MainActivity} origActivity=null realActivity=ComponentInfo{net.kravos.weather/net.kravos.weather.ui.MainActivity} numActivities=1 lastActiveTime=40613 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{android.window.IWindowContainerToken$Stub$Proxy@9807684} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=null topActivityInfo=ActivityInfo{de6de6d net.kravos.weather.ui.MainActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= false topActivityLetterboxed= false isFromDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 locusId=null displayAreaFeatureId=1 cameraCompatControlState=hidden}, remoteTransition = null, displayChange = null }
+290:11-09 09:14:40.559   520  2754 D CoreBackPreview: Window{42a0196 u0 Splash Screen net.kravos.weather}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@81f6eed, mPriority=0, mIsAnimationCallback=false}
+326:11-09 09:14:40.615   520   552 I ActivityManager: Start proc 3332:net.kravos.weather/u0a192 for next-top-activity {net.kravos.weather/net.kravos.weather.ui.MainActivity}
+379:11-09 09:14:40.712   520   539 V WindowManager: Sent Transition #6 createdAt=11-09 09:14:40.385 via request=TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=8 displayId=0 isRunning=true baseIntent=Intent { flg=0x10000000 cmp=net.kravos.weather/.ui.MainActivity } baseActivity=ComponentInfo{net.kravos.weather/net.kravos.weather.ui.MainActivity} topActivity=ComponentInfo{net.kravos.weather/net.kravos.weather.ui.MainActivity} origActivity=null realActivity=ComponentInfo{net.kravos.weather/net.kravos.weather.ui.MainActivity} numActivities=1 lastActiveTime=40613 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{RemoteToken{d56dabf Task{8cc262 #8 type=standard A=10192:net.kravos.weather}}} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=null topActivityInfo=ActivityInfo{35b858c net.kravos.weather.ui.MainActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= false topActivityLetterboxed= false isFromDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 locusId=null displayAreaFeatureId=1 cameraCompatControlState=hidden}, remoteTransition = null, displayChange = null }
+381:11-09 09:14:40.712   520   539 V WindowManager:     info={id=6 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{d56dabf Task{8cc262 #8 type=standard A=10192:net.kravos.weather}}} m=OPEN f=NONE leash=Surface(name=Task=8)/@0x4b63019 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{WCT{RemoteToken{6f0b4d5 Task{d639ea #1 type=home}}} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0x91e2ced sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0}]}
+750:11-09 09:14:41.299  3332  3332 D nativeloader: Configuring clns-6 for other apk /data/app/~~5_Nyhnun3AhqlUnTrFSrRA==/net.kravos.weather-93FXCm2O7yCh46xB-TowuA==/base.apk. target_sdk_version=35, uses_libraries=, library_path=/data/app/~~5_Nyhnun3AhqlUnTrFSrRA==/net.kravos.weather-93FXCm2O7yCh46xB-TowuA==/lib/x86_64:/data/app/~~5_Nyhnun3AhqlUnTrFSrRA==/net.kravos.weather-93FXCm2O7yCh46xB-TowuA==/base.apk!/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/net.kravos.weather
+766:11-09 09:14:41.319  3332  3332 V GraphicsEnvironment: ANGLE GameManagerService for net.kravos.weather: false
+767:11-09 09:14:41.319  3332  3332 V GraphicsEnvironment: net.kravos.weather is not listed in per-application setting
+1126:11-09 09:14:41.867   520   536 D CoreBackPreview: Window{c9e9e19 u0 net.kravos.weather/net.kravos.weather.ui.MainActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@8f206da, mPriority=0, mIsAnimationCallback=false}
+1261:11-09 09:14:42.035   520  2320 D ConnectivityService: requestNetwork for uid/pid:10192/3332 activeRequest: null callbackRequest: 88 [NetworkRequest [ REQUEST id=89, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: net.kravos.weather UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647
+1266:11-09 09:14:42.038   520   754 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=89, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: net.kravos.weather UnderlyingNetworks: Null] ]
+1267:11-09 09:14:42.038   520   754 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=89, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: net.kravos.weather UnderlyingNetworks: Null] ]
+1268:11-09 09:14:42.038   520   754 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=89, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: net.kravos.weather UnderlyingNetworks: Null] ]
+1269:11-09 09:14:42.038   520   754 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=89, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: net.kravos.weather UnderlyingNetworks: Null] ]
+1683:11-09 09:14:42.658   520   539 I ActivityTaskManager: Displayed net.kravos.weather/.ui.MainActivity for user 0: +2s278ms
+1687:11-09 09:14:42.674   520  2393 W InputManager-JNI: Input channel object '42a0196 Splash Screen net.kravos.weather (client)' was disposed without first being removed with the input manager!
+1708:11-09 09:14:42.787  3332  3332 D WM-WorkerWrapper: Starting work for net.kravos.weather.work.RefreshWorker
+1730:11-09 09:14:42.896   520   901 I ImeTracker: net.kravos.weather:64e8e10b: onRequestHide at ORIGIN_SERVER_HIDE_INPUT reason HIDE_UNSPECIFIED_WINDOW
+1731:11-09 09:14:42.896   520   901 I ImeTracker: net.kravos.weather:64e8e10b: onCancelled at PHASE_SERVER_SHOULD_HIDE
+1733:11-09 09:14:42.899  3332  3413 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=bb352578-af6f-45cf-a656-7b11921268e6, tags={ net.kravos.weather.work.RefreshWorker } ]
+1740:11-09 09:14:42.902  1540  1540 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1877 onStartInput(EditorInfo{inputType=0x0(NULL) imeOptions=0x0 privateImeOptions=null actionName=UNSPECIFIED actionLabel=null actionId=0 initialSelStart=-1 initialSelEnd=-1 initialCapsMode=0x0 hintText=null label=null packageName=net.kravos.weather fieldId=0 fieldName=null extras=null}, false)
+1795:11-09 09:14:42.959   520  2393 W JobScheduler: Job didn't exist in JobStore: 6097837 {androidx.work.systemjobscheduler} #u0a192/0 @androidx.work.systemjobscheduler@net.kravos.weather/androidx.work.impl.background.systemjob.SystemJobService
+4616:11-09 09:14:47.694  3332  4123 D ProfileInstaller: Installing profile for net.kravos.weather
+5226:11-09 09:14:48.152  1423  3512 I FontLog : Package net.kravos.weather has no metadata [CONTEXT service_id=132 ]
+5289:11-09 09:14:48.191  1463  3699 I BlockstoreStorage: Clearing Blockstore Data for package net.kravos.weather [CONTEXT service_id=258 ]
+6955:11-09 09:14:50.758   520   550 D AppWidgetServiceImpl: Provider info from ComponentInfo{net.kravos.weather/net.kravos.weather.widget.WeatherWidgetReceiver} won't be persisted.
+7044:11-09 09:14:50.985   520   550 D AppWidgetServiceImpl: Provider info from ComponentInfo{net.kravos.weather/net.kravos.weather.widget.WeatherWidgetReceiver} won't be persisted.
+7239:11-09 09:14:51.196  1038  1038 D CarrierSvcBindHelper: onPackageModified: net.kravos.weather
+7360:11-09 09:14:51.219  1038  1342 D ImsResolver: maybeAddedImsService, packageName: net.kravos.weather
+12034:11-09 09:14:52.234  1613  1613 I AiAiEcho: AppFetcherImpl onPackageChanged net.kravos.weather.
+12035:11-09 09:14:52.234  1613  2406 I AiAiEcho: AppIndexer Package:[net.kravos.weather] UserProfile:[0] Enabled:[true].
+12036:11-09 09:14:52.234  1613  2406 I AiAiEcho: AppFetcherImplV2 updateApps package:[net.kravos.weather], userId:[0], reason:[package is updated.].
+12039:11-09 09:14:52.246   520   550 D AppWidgetServiceImpl: Provider info from ComponentInfo{net.kravos.weather/net.kravos.weather.widget.WeatherWidgetReceiver} won't be persisted.
+13324:11-09 09:14:55.428  3332  3332 I KravosWeather: located Novi Beograd 44.817598333333336,20.412198333333333 RS
+13897:11-09 09:14:56.027  3332  4538 I KravosWeather: GET https://seasonal-api.open-meteo.com/v1/seasonal?latitude=44.8176&longitude=20.4122&timezone=auto&weekly=temperature_2m_mean,temperature_2m_anomaly,precipitation -> 200 (1372 b) {"latitude":44.824356,"longitude":20.181818,"generationtime_ms":0.28455257415771484,"utc_offset_seconds":3600,"timezone":"Europe/Belgrade","timezone_abbreviation":"GMT+1","elevation":78.0,"weekly_units":{"time":"iso8601"
+13918:11-09 09:14:56.040  3332  4537 I KravosWeather: GET https://seasonal-api.open-meteo.com/v1/seasonal?latitude=44.8176&longitude=20.4122&timezone=auto&monthly=temperature_2m_mean,temperature_2m_anomaly,precipitatio -> 200 (649 b) {"latitude":44.824356,"longitude":20.181818,"generationtime_ms":0.06270408630371094,"utc_offset_seconds":3600,"timezone":"Europe/Belgrade","timezone_abbreviation":"GMT+1","elevation":78.0,"monthly_units":{"time":"iso8601
+13960:11-09 09:14:56.071  3332  3556 I KravosWeather: GET https://air-quality-api.open-meteo.com/v1/air-quality?latitude=44.8176&longitude=20.4122&timezone=auto&forecast_days=5&current=european_aqi,us_aqi,pm10,pm2_5,ni -> 200 (8367 b) {"latitude":44.8,"longitude":20.400002,"generationtime_ms":1.5153884887695312,"utc_offset_seconds":3600,"timezone":"Europe/Belgrade","timezone_abbreviation":"GMT+1","elevation":78.0,"current_units":{"time":"iso8601","int
+13965:11-09 09:14:56.080  3332  3557 I KravosWeather: GET https://api.open-meteo.com/v1/forecast?latitude=44.8176&longitude=20.4122&timezone=auto&past_days=1&forecast_days=16&wind_speed_unit=kmh&current=temperature_2m, -> 200 (39614 b) {"latitude":44.824757,"longitude":20.41275,"generationtime_ms":4.566788673400879,"utc_offset_seconds":3600,"timezone":"Europe/Belgrade","timezone_abbreviation":"GMT+1","elevation":78.0,"current_units":{"time":"iso8601","
+14039:11-09 09:14:56.156  3332  4539 I KravosWeather: GET https://seasonal-api.open-meteo.com/v1/seasonal?latitude=44.8176&longitude=20.4122&timezone=auto&forecast_days=46&daily=temperature_2m_max,temperature_2m_min,pr -> 200 (43434 b) {"latitude":44.824356,"longitude":20.181818,"generationtime_ms":9.08970832824707,"utc_offset_seconds":3600,"timezone":"Europe/Belgrade","timezone_abbreviation":"GMT+1","elevation":78.0,"daily_units":{"time":"iso8601","te
+14618:11-09 09:14:59.074  3332  4540 I KravosWeather: GET https://feeds.meteoalarm.org/api/v1/warnings/feeds-serbia -> 200 (931011 b) {"warnings":[{"alert":{"identifier":"2.49.0.0.688.0.20261105063002.811784","incidents":"Alert","info":[{"area":[{"areaDesc":"Backa","geocode":[{"value":"RS002","valueName":"EMMA_ID"}]}],"audience":"Private","category":["
+14627:11-09 09:14:59.136  3332  3332 I KravosWeather: long range: days=46 weeks=7 months=6
+14628:11-09 09:14:59.136  3332  3332 I KravosWeather: bundle Novi Beograd: fc=true hours=408 days=17 min15=24 air=true eaqi=56.0 pollen={ALDER=0.0, BIRCH=0.0, OLIVE=0.0, GRASS=0.0, MUGWORT=0.0, RAGWEED=0.0} warnings=0
+20128:11-09 09:15:08.258  4924  4924 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+20142:11-09 09:15:08.278  4924  4924 I AndroidRuntime: Using default boot image
+20143:11-09 09:15:08.278  4924  4924 I AndroidRuntime: Leaving lock profiling enabled
+20281:11-09 09:15:08.579  4924  4924 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+21513:11-09 09:15:09.738  4924  4924 D AndroidRuntime: Shutting down VM
+24504:11-09 09:15:13.798  5116  5116 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+24508:11-09 09:15:13.804  5116  5116 I AndroidRuntime: Using default boot image
+24509:11-09 09:15:13.804  5116  5116 I AndroidRuntime: Leaving lock profiling enabled
+24553:11-09 09:15:13.927  5116  5116 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+25015:11-09 09:15:14.991  5116  5116 D AndroidRuntime: Shutting down VM
+36121:11-09 09:15:37.919  5750  5750 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+36128:11-09 09:15:37.924  5750  5750 I AndroidRuntime: Using default boot image
+36129:11-09 09:15:37.924  5750  5750 I AndroidRuntime: Leaving lock profiling enabled
+36154:11-09 09:15:38.013  5750  5750 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+38538:11-09 09:15:39.071  5750  5750 D AndroidRuntime: Shutting down VM
+40137:11-09 09:15:40.138   520   539 V WindowManager:     info={id=7 t=TO_FRONT f=0x80 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{6f0b4d5 Task{d639ea #1 type=home}}} m=TO_FRONT f=SHOW_WALLPAPER|MOVE_TO_TOP leash=Surface(name=Task=1)/@0x91e2ced sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{WCT{RemoteToken{d56dabf Task{8cc262 #8 type=standard A=10192:net.kravos.weather}}} m=TO_BACK f=NONE leash=Surface(name=Task=8)/@0x4b63019 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{null m=TO_FRONT f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{ef68edd token=android.os.Binder@c97e2b4})/@0x298ce52 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0}]}
+46330:11-09 09:15:48.741  5906  5906 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+46331:11-09 09:15:48.744  5906  5906 I AndroidRuntime: Using default boot image
+46332:11-09 09:15:48.744  5906  5906 I AndroidRuntime: Leaving lock profiling enabled
+46345:11-09 09:15:48.851  5906  5906 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+46398:11-09 09:15:49.884  5906  5906 D AndroidRuntime: Shutting down VM
+47151:11-09 09:15:56.604  5986  5986 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+47152:11-09 09:15:56.617  5986  5986 I AndroidRuntime: Using default boot image
+47153:11-09 09:15:56.618  5986  5986 I AndroidRuntime: Leaving lock profiling enabled
+47166:11-09 09:15:56.725  5986  5986 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+47274:11-09 09:15:57.797  5986  5986 D AndroidRuntime: Shutting down VM
+47377:11-09 09:16:13.021  6032  6032 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+47378:11-09 09:16:13.024  6032  6032 I AndroidRuntime: Using default boot image
+47379:11-09 09:16:13.024  6032  6032 I AndroidRuntime: Leaving lock profiling enabled
+47392:11-09 09:16:13.097  6032  6032 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+47492:11-09 09:16:14.123  6032  6032 D AndroidRuntime: Shutting down VM
+47670:11-09 09:16:15.147   520   539 V WindowManager:     info={id=8 t=TO_FRONT f=0x80 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{6f0b4d5 Task{d639ea #1 type=home}}} m=TO_FRONT f=SHOW_WALLPAPER|MOVE_TO_TOP leash=Surface(name=Task=1)/@0x91e2ced sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{WCT{RemoteToken{d56dabf Task{8cc262 #8 type=standard A=10192:net.kravos.weather}}} m=TO_BACK f=NONE leash=Surface(name=Task=8)/@0x4b63019 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{null m=TO_FRONT f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{ef68edd token=android.os.Binder@c97e2b4})/@0x298ce52 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0}]}
+48410:11-09 09:16:28.759  6181  6181 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+48411:11-09 09:16:28.762  6181  6181 I AndroidRuntime: Using default boot image
+48412:11-09 09:16:28.762  6181  6181 I AndroidRuntime: Leaving lock profiling enabled
+48425:11-09 09:16:28.831  6181  6181 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+48499:11-09 09:16:29.866  6181  6181 D AndroidRuntime: Shutting down VM
+48586:11-09 09:16:30.790   520   539 V WindowManager:     info={id=9 t=TO_FRONT f=0x80 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{6f0b4d5 Task{d639ea #1 type=home}}} m=TO_FRONT f=SHOW_WALLPAPER|MOVE_TO_TOP leash=Surface(name=Task=1)/@0x91e2ced sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{WCT{RemoteToken{d56dabf Task{8cc262 #8 type=standard A=10192:net.kravos.weather}}} m=TO_BACK f=NONE leash=Surface(name=Task=8)/@0x4b63019 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{null m=TO_FRONT f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{ef68edd token=android.os.Binder@c97e2b4})/@0x298ce52 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0}]}
+48644:11-09 09:16:31.392  3332  4539 I KravosWeather: GET https://api.rainviewer.com/public/weather-maps.json -> 200 (818 b) {"version":"2.0","generated":1794215722,"host":"https://tilecache.rainviewer.com","radar":{"past":[{"time":1794208200,"path":"/v2/radar/f9673557dc37"},{"time":1794208800,"path":"/v2/radar/aaebfad9f68d"},{"time":179420940
+49044:11-09 09:16:53.939  6307  6307 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+49045:11-09 09:16:53.942  6307  6307 I AndroidRuntime: Using default boot image
+49046:11-09 09:16:53.942  6307  6307 I AndroidRuntime: Leaving lock profiling enabled
+49059:11-09 09:16:54.007  6307  6307 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+49294:11-09 09:16:55.115  6307  6307 D AndroidRuntime: Shutting down VM
+49455:11-09 09:17:07.287  6416  6416 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+49456:11-09 09:17:07.290  6416  6416 I AndroidRuntime: Using default boot image
+49457:11-09 09:17:07.290  6416  6416 I AndroidRuntime: Leaving lock profiling enabled
+49470:11-09 09:17:07.356  6416  6416 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+49569:11-09 09:17:08.389  6416  6416 D AndroidRuntime: Shutting down VM
+49615:11-09 09:17:12.323  6448  6448 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+49616:11-09 09:17:12.327  6448  6448 I AndroidRuntime: Using default boot image
+49617:11-09 09:17:12.327  6448  6448 I AndroidRuntime: Leaving lock profiling enabled
+49630:11-09 09:17:12.394  6448  6448 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+49731:11-09 09:17:13.435  6448  6448 D AndroidRuntime: Shutting down VM
+49833:11-09 09:17:15.714  3332  6255 I KravosWeather: GET https://api.open-meteo.com/v1/forecast?latitude=49.121,49.121,49.121,49.121,49.121,49.121,49.121,49.121,49.121,48.018,48.018,48.018,48.018,48.018,48.018,48.018, -> 200 (192210 b) [{"latitude":49.12053,"longitude":16.16495,"generationtime_ms":0.8106231689453125,"utc_offset_seconds":3600,"timezone":"Europe/Prague","timezone_abbreviation":"GMT+1","elevation":391.0,"hourly_units":{"time":"iso8601","t
+49899:11-09 09:17:32.518  6495  6495 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+49900:11-09 09:17:32.521  6495  6495 I AndroidRuntime: Using default boot image
+49901:11-09 09:17:32.521  6495  6495 I AndroidRuntime: Leaving lock profiling enabled
+49914:11-09 09:17:32.587  6495  6495 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+49974:11-09 09:17:33.624  6495  6495 D AndroidRuntime: Shutting down VM
+50051:11-09 09:17:43.710  6530  6530 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+50052:11-09 09:17:43.714  6530  6530 I AndroidRuntime: Using default boot image
+50053:11-09 09:17:43.714  6530  6530 I AndroidRuntime: Leaving lock profiling enabled
+50066:11-09 09:17:43.782  6530  6530 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+50112:11-09 09:17:44.817  6530  6530 D AndroidRuntime: Shutting down VM
+50197:11-09 09:17:54.885  6553  6553 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+50198:11-09 09:17:54.888  6553  6553 I AndroidRuntime: Using default boot image
+50199:11-09 09:17:54.888  6553  6553 I AndroidRuntime: Leaving lock profiling enabled
+50212:11-09 09:17:54.959  6553  6553 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+50266:11-09 09:17:55.981  6553  6553 D AndroidRuntime: Shutting down VM
+50416:11-09 09:17:56.906   520   539 V WindowManager:     info={id=10 t=TO_FRONT f=0x80 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{6f0b4d5 Task{d639ea #1 type=home}}} m=TO_FRONT f=SHOW_WALLPAPER|MOVE_TO_TOP leash=Surface(name=Task=1)/@0x91e2ced sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{WCT{RemoteToken{d56dabf Task{8cc262 #8 type=standard A=10192:net.kravos.weather}}} m=TO_BACK f=NONE leash=Surface(name=Task=8)/@0x4b63019 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{null m=TO_FRONT f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{ef68edd token=android.os.Binder@c97e2b4})/@0x298ce52 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0}]}
+50468:11-09 09:18:01.923  6583  6583 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+50469:11-09 09:18:01.926  6583  6583 I AndroidRuntime: Using default boot image
+50470:11-09 09:18:01.926  6583  6583 I AndroidRuntime: Leaving lock profiling enabled
+50483:11-09 09:18:01.992  6583  6583 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+50541:11-09 09:18:03.022  6583  6583 D AndroidRuntime: Shutting down VM
+50642:11-09 09:18:09.058  6611  6611 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+50643:11-09 09:18:09.061  6611  6611 I AndroidRuntime: Using default boot image
+50644:11-09 09:18:09.061  6611  6611 I AndroidRuntime: Leaving lock profiling enabled
+50657:11-09 09:18:09.127  6611  6611 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+50705:11-09 09:18:10.146  6611  6611 D AndroidRuntime: Shutting down VM
+50783:11-09 09:18:11.031  3332  3332 I ImeTracker: net.kravos.weather:2c1efba3: onRequestShow at ORIGIN_CLIENT_SHOW_SOFT_INPUT reason SHOW_SOFT_INPUT_BY_INSETS_API
+50787:11-09 09:18:11.033  1540  1540 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1877 onStartInput(EditorInfo{inputType=0x8001(Normal) imeOptions=0x2000006 privateImeOptions=null actionName=DONE actionLabel=null actionId=0 initialSelStart=0 initialSelEnd=0 initialCapsMode=0x0 hintText=null label=null packageName=net.kravos.weather fieldId=-1 fieldName=null extras=Bundle[mParcelledData.dataSize=404]}, false)
+50796:11-09 09:18:11.037  3332  3332 I ImeTracker: net.kravos.weather:19bbc5ab: onRequestShow at ORIGIN_CLIENT_SHOW_SOFT_INPUT reason SHOW_SOFT_INPUT
+50813:11-09 09:18:11.050  1540  1540 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1877 onStartInput(EditorInfo{inputType=0x8001(Normal) imeOptions=0x2000006 privateImeOptions=null actionName=DONE actionLabel=null actionId=0 initialSelStart=0 initialSelEnd=0 initialCapsMode=0x0 hintText=null label=null packageName=net.kravos.weather fieldId=-1 fieldName=null extras=Bundle[mParcelledData.dataSize=404]}, true)
+50817:11-09 09:18:11.052  1540  1540 I GoogleInputMethodService: GoogleInputMethodService.onStartInputView():1995 onStartInputView(EditorInfo{inputType=0x8001(Normal) imeOptions=0x2000006 privateImeOptions=null actionName=DONE actionLabel=null actionId=0 initialSelStart=0 initialSelEnd=0 initialCapsMode=0x0 hintText=null label=null packageName=net.kravos.weather fieldId=-1 fieldName=null extras=Bundle[{android.support.text.emoji.emojiCompat_metadataVersion=9, androidx.core.view.inputmethod.EditorInfoCompat.STYLUS_HANDWRITING_ENABLED=true, android.support.text.emoji.emojiCompat_replaceAll=false}]}, false)
+50829:11-09 09:18:11.081  1540  1540 I AndroidIME: AbstractIme.onActivate():86 LatinIme.onActivate() : EditorInfo = inputType=0x8001(Normal) imeOptions=0x2000006 privateImeOptions=null actionName=DONE actionLabel=null actionId=0 initialSelStart=0 initialSelEnd=0 initialCapsMode=0x0 hintText=null label=null packageName=net.kravos.weather fieldId=-1 fieldName=null extras=Bundle[{android.support.text.emoji.emojiCompat_metadataVersion=9, androidx.core.view.inputmethod.EditorInfoCompat.STYLUS_HANDWRITING_ENABLED=true, android.support.text.emoji.emojiCompat_replaceAll=false}], IncognitoMode = false, DeviceLocked = false
+50886:11-09 09:18:11.098   520  1969 D CoreBackPreview: Window{c9e9e19 u0 net.kravos.weather/net.kravos.weather.ui.MainActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@2144eb0, mPriority=0, mIsAnimationCallback=false}
+50887:11-09 09:18:11.098   520  1969 I ImeTracker: net.kravos.weather:2c1efba3: onFailed at PHASE_WM_SHOW_IME_RUNNER
+51143:11-09 09:18:11.693  3332  3332 I ImeTracker: net.kravos.weather:19bbc5ab: onShown
+51174:11-09 09:18:11.759  3332  3332 W FrameTracker: Missed SF frame:PREDICTION_ERROR, 15898, 0, CUJ=J<IME_INSETS_ANIMATION::0@1@net.kravos.weather>
+51299:11-09 09:18:15.307  3332  6255 I KravosWeather: GET https://geocoding-api.open-meteo.com/v1/search?name=Thessaloniki&count=12&language=sr&format=json -> 200 (1162 b) {"results":[{"id":734077,"name":"Solun","latitude":40.64072,"longitude":22.93493,"elevation":-9999.0,"feature_code":"PPLA","country_code":"GR","admin1_id":6697801,"admin2_id":734075,"admin3_id":8133841,"timezone":"Europe
+51324:11-09 09:18:20.309  6682  6682 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+51325:11-09 09:18:20.312  6682  6682 I AndroidRuntime: Using default boot image
+51326:11-09 09:18:20.312  6682  6682 I AndroidRuntime: Leaving lock profiling enabled
+51339:11-09 09:18:20.377  6682  6682 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+51439:11-09 09:18:21.397  6682  6682 D AndroidRuntime: Shutting down VM
+51556:11-09 09:18:22.293  3332  3332 I ImeTracker: net.kravos.weather:c1e0e03a: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT_BY_INSETS_API
+51557:11-09 09:18:22.294  3332  3332 I ImeTracker: net.kravos.weather:346b4be0: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT_BY_INSETS_API
+51560:11-09 09:18:22.302  3332  3332 I ImeTracker: net.kravos.weather:346b4be0: onCancelled at PHASE_CLIENT_APPLY_ANIMATION
+51568:11-09 09:18:22.303  1540  1540 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1877 onStartInput(EditorInfo{inputType=0x0(NULL) imeOptions=0x0 privateImeOptions=null actionName=UNSPECIFIED actionLabel=null actionId=0 initialSelStart=-1 initialSelEnd=-1 initialCapsMode=0x0 hintText=null label=null packageName=net.kravos.weather fieldId=0 fieldName=null extras=null}, true)
+51572:11-09 09:18:22.304   520   593 D CoreBackPreview: Window{c9e9e19 u0 net.kravos.weather/net.kravos.weather.ui.MainActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@137c38a, mPriority=0, mIsAnimationCallback=false}
+51573:11-09 09:18:22.313  3332  3332 I ImeTracker: net.kravos.weather:d5b81e7f: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT_BY_INSETS_API
+51574:11-09 09:18:22.313   520   593 I ImeTracker: net.kravos.weather:d5b81e7f: onCancelled at PHASE_SERVER_SHOULD_HIDE
+51575:11-09 09:18:22.313  3332  3332 I ImeTracker: net.kravos.weather:c1e0e03a: onHidden
+51577:11-09 09:18:22.410  3332  6255 I KravosWeather: GET https://api.open-meteo.com/v1/forecast?latitude=40.6407&longitude=22.9349&timezone=auto&past_days=1&forecast_days=16&wind_speed_unit=kmh&current=temperature_2m, -> 200 (39565 b) {"latitude":40.665985,"longitude":22.88998,"generationtime_ms":2.161741256713867,"utc_offset_seconds":7200,"timezone":"Europe/Athens","timezone_abbreviation":"GMT+2","elevation":10.0,"current_units":{"time":"iso8601","in
+51578:11-09 09:18:22.559  3332  3332 W FrameTracker: Missed SF frame:PREDICTION_ERROR, 16468, 0, CUJ=J<IME_INSETS_ANIMATION::1@1@net.kravos.weather>
+51579:11-09 09:18:22.829  3332  6378 I KravosWeather: GET https://air-quality-api.open-meteo.com/v1/air-quality?latitude=40.6407&longitude=22.9349&timezone=auto&forecast_days=5&current=european_aqi,us_aqi,pm10,pm2_5,ni -> 200 (8296 b) {"latitude":40.6,"longitude":22.900002,"generationtime_ms":1.337289810180664,"utc_offset_seconds":7200,"timezone":"Europe/Athens","timezone_abbreviation":"GMT+2","elevation":10.0,"current_units":{"time":"iso8601","interv
+51580:11-09 09:18:22.841  3332  6713 I KravosWeather: GET https://seasonal-api.open-meteo.com/v1/seasonal?latitude=40.6407&longitude=22.9349&timezone=auto&monthly=temperature_2m_mean,temperature_2m_anomaly,precipitatio -> 200 (646 b) {"latitude":40.6089,"longitude":23.0,"generationtime_ms":0.11050701141357422,"utc_offset_seconds":7200,"timezone":"Europe/Athens","timezone_abbreviation":"GMT+2","elevation":10.0,"monthly_units":{"time":"iso8601","temper
+51581:11-09 09:18:22.847  3332  6712 I KravosWeather: GET https://seasonal-api.open-meteo.com/v1/seasonal?latitude=40.6407&longitude=22.9349&timezone=auto&weekly=temperature_2m_mean,temperature_2m_anomaly,precipitation -> 200 (1368 b) {"latitude":40.6089,"longitude":23.0,"generationtime_ms":0.08893013000488281,"utc_offset_seconds":7200,"timezone":"Europe/Athens","timezone_abbreviation":"GMT+2","elevation":10.0,"weekly_units":{"time":"iso8601","tempera
+51582:11-09 09:18:22.868  3332  6710 I KravosWeather: GET https://seasonal-api.open-meteo.com/v1/seasonal?latitude=40.6407&longitude=22.9349&timezone=auto&forecast_days=46&daily=temperature_2m_max,temperature_2m_min,pr -> 200 (44140 b) {"latitude":40.6089,"longitude":23.0,"generationtime_ms":10.360956192016602,"utc_offset_seconds":7200,"timezone":"Europe/Athens","timezone_abbreviation":"GMT+2","elevation":10.0,"daily_units":{"time":"iso8601","temperatu
+51583:11-09 09:18:23.274  3332  6711 I KravosWeather: GET https://feeds.meteoalarm.org/api/v1/warnings/feeds-greece -> 200 (38841 b) {"warnings":[{"alert":{"identifier":"2.49.0.0.300.0.GR.261104115500.001000001","incidents":"Alert","info":[{"area":[{"areaDesc":"Thessalia","geocode":[{"value":"GR001","valueName":"EMMA_ID"}]}],"category":["Met"],"certai
+51585:11-09 09:18:23.281  3332  3332 I KravosWeather: long range: days=46 weeks=7 months=6
+51586:11-09 09:18:23.281  3332  3332 I KravosWeather: bundle Solun: fc=true hours=408 days=17 min15=24 air=true eaqi=21.0 pollen={ALDER=0.0, BIRCH=0.0, OLIVE=0.0, GRASS=0.0, MUGWORT=0.0, RAGWEED=0.0} warnings=7
+51614:11-09 09:18:39.961  6744  6744 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+51615:11-09 09:18:39.964  6744  6744 I AndroidRuntime: Using default boot image
+51616:11-09 09:18:39.964  6744  6744 I AndroidRuntime: Leaving lock profiling enabled
+51629:11-09 09:18:40.031  6744  6744 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+51675:11-09 09:18:41.053  6744  6744 D AndroidRuntime: Shutting down VM
+51760:11-09 09:18:47.085  6771  6771 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+51761:11-09 09:18:47.088  6771  6771 I AndroidRuntime: Using default boot image
+51762:11-09 09:18:47.088  6771  6771 I AndroidRuntime: Leaving lock profiling enabled
+51776:11-09 09:18:47.157  6771  6771 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+51855:11-09 09:18:48.180  6771  6771 D AndroidRuntime: Shutting down VM
+52089:11-09 09:19:01.769  6828  6828 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+52090:11-09 09:19:01.772  6828  6828 I AndroidRuntime: Using default boot image
+52091:11-09 09:19:01.772  6828  6828 I AndroidRuntime: Leaving lock profiling enabled
+52104:11-09 09:19:01.841  6828  6828 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+52149:11-09 09:19:02.858  6828  6828 D AndroidRuntime: Shutting down VM
+52265:11-09 09:19:08.787  6853  6853 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+52266:11-09 09:19:08.790  6853  6853 I AndroidRuntime: Using default boot image
+52267:11-09 09:19:08.790  6853  6853 I AndroidRuntime: Leaving lock profiling enabled
+52280:11-09 09:19:08.856  6853  6853 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+52328:11-09 09:19:09.871  6853  6853 D AndroidRuntime: Shutting down VM
+52405:11-09 09:19:10.761  3332  3332 I KravosWeather: long range: days=46 weeks=7 months=6
+52406:11-09 09:19:10.761  3332  3332 I KravosWeather: bundle Novi Beograd: fc=true hours=408 days=17 min15=24 air=true eaqi=56.0 pollen={ALDER=0.0, BIRCH=0.0, OLIVE=0.0, GRASS=0.0, MUGWORT=0.0, RAGWEED=0.0} warnings=0
+52425:11-09 09:19:24.462  6889  6889 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+52426:11-09 09:19:24.465  6889  6889 I AndroidRuntime: Using default boot image
+52427:11-09 09:19:24.465  6889  6889 I AndroidRuntime: Leaving lock profiling enabled
+52440:11-09 09:19:24.530  6889  6889 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+52493:11-09 09:19:25.610  6889  6889 D AndroidRuntime: Shutting down VM
+52606:11-09 09:19:26.542   520   539 V WindowManager:     info={id=11 t=TO_FRONT f=0x80 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{6f0b4d5 Task{d639ea #1 type=home}}} m=TO_FRONT f=SHOW_WALLPAPER|MOVE_TO_TOP leash=Surface(name=Task=1)/@0x91e2ced sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{WCT{RemoteToken{d56dabf Task{8cc262 #8 type=standard A=10192:net.kravos.weather}}} m=TO_BACK f=NONE leash=Surface(name=Task=8)/@0x4b63019 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{null m=TO_FRONT f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{ef68edd token=android.os.Binder@c97e2b4})/@0x298ce52 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0}]}
+52643:11-09 09:19:31.659  6936  6936 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+52644:11-09 09:19:31.662  6936  6936 I AndroidRuntime: Using default boot image
+52645:11-09 09:19:31.662  6936  6936 I AndroidRuntime: Leaving lock profiling enabled
+52658:11-09 09:19:31.730  6936  6936 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+52703:11-09 09:19:32.750  6936  6936 D AndroidRuntime: Shutting down VM
+52812:11-09 09:19:33.679   520   539 V WindowManager:     info={id=12 t=TO_FRONT f=0x80 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{6f0b4d5 Task{d639ea #1 type=home}}} m=TO_FRONT f=SHOW_WALLPAPER|MOVE_TO_TOP leash=Surface(name=Task=1)/@0x91e2ced sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{WCT{RemoteToken{d56dabf Task{8cc262 #8 type=standard A=10192:net.kravos.weather}}} m=TO_BACK f=NONE leash=Surface(name=Task=8)/@0x4b63019 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{null m=TO_FRONT f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{ef68edd token=android.os.Binder@c97e2b4})/@0x298ce52 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0}]}
+52846:11-09 09:19:34.110  3332  6711 I KravosWeather: GET https://api.rainviewer.com/public/weather-maps.json -> 200 (818 b) {"version":"2.0","generated":1794215722,"host":"https://tilecache.rainviewer.com","radar":{"past":[{"time":1794208200,"path":"/v2/radar/f9673557dc37"},{"time":1794208800,"path":"/v2/radar/aaebfad9f68d"},{"time":179420940
+53941:11-09 09:19:51.827  7021  7021 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+53942:11-09 09:19:51.830  7021  7021 I AndroidRuntime: Using default boot image
+53943:11-09 09:19:51.830  7021  7021 I AndroidRuntime: Leaving lock profiling enabled
+53956:11-09 09:19:51.897  7021  7021 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+54002:11-09 09:19:52.931  7021  7021 D AndroidRuntime: Shutting down VM
+54090:11-09 09:19:55.229  3332  6989 I KravosWeather: GET https://api.open-meteo.com/v1/forecast?latitude=49.121,49.121,49.121,49.121,49.121,49.121,49.121,49.121,49.121,48.018,48.018,48.018,48.018,48.018,48.018,48.018, -> 200 (192227 b) [{"latitude":49.12053,"longitude":16.16495,"generationtime_ms":0.3459453582763672,"utc_offset_seconds":3600,"timezone":"Europe/Prague","timezone_abbreviation":"GMT+1","elevation":391.0,"hourly_units":{"time":"iso8601","t
+54108:11-09 09:20:05.015  7053  7053 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+54109:11-09 09:20:05.018  7053  7053 I AndroidRuntime: Using default boot image
+54110:11-09 09:20:05.018  7053  7053 I AndroidRuntime: Leaving lock profiling enabled
+54125:11-09 09:20:05.087  7053  7053 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
+54208:11-09 09:20:06.128  7053  7053 D AndroidRuntime: Shutting down VM
+54343:11-09 09:20:07.083   520   539 V WindowManager:     info={id=13 t=TO_FRONT f=0x80 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{6f0b4d5 Task{d639ea #1 type=home}}} m=TO_FRONT f=SHOW_WALLPAPER|MOVE_TO_TOP leash=Surface(name=Task=1)/@0x91e2ced sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{WCT{RemoteToken{d56dabf Task{8cc262 #8 type=standard A=10192:net.kravos.weather}}} m=TO_BACK f=NONE leash=Surface(name=Task=8)/@0x4b63019 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0},{null m=TO_FRONT f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{ef68edd token=android.os.Binder@c97e2b4})/@0x298ce52 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0}]}
+56243:11-09 09:20:10.012   520  2751 D JobScheduler: executeRunCommand(): net.kravos.weather/null/0 0 s=false f=true
