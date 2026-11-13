@@ -1,5 +1,5 @@
-checked 2026-11-12T13:50:06Z
+checked 2026-11-13T13:12:29Z
 301 https://ludwize.github.io/kravos-weather/
-200 https://api.open-meteo.com/v1/forecast?latitude=44.8&longitude=20.4&current=temperature_2m
+000 https://api.open-meteo.com/v1/forecast?latitude=44.8&longitude=20.4&current=temperature_2m
 200 https://air-quality-api.open-meteo.com/v1/air-quality?latitude=44.8&longitude=20.4&current=european_aqi
 200 https://api.rainviewer.com/public/weather-maps.json
